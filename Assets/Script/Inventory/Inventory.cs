@@ -73,10 +73,12 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < inventorySlots.transform.childCount; i++)
         {
             Image img = inventorySlots.transform.GetChild(i).GetComponent<Image>();
+            Text text = img.gameObject.transform.GetChild(0).GetComponent<Text>();
             
             if (items.Count >= i)
             {
                 img.sprite = items[i].data.sprite;
+                text.text = items[i].count.ToString();
             }
         }
     }
