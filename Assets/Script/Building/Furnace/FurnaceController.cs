@@ -59,7 +59,7 @@ public class FurnaceController : MonoBehaviour
                 if (timer <= EndTimer)
                 {
                     timer += FurnaceSpeed * Time.deltaTime;
-                    GetComponent<BuildUi>().UpdateValueSlider(timer);
+                    GetComponent<Build_Ui>().UpdateValueSlider(timer);
                 }
                 else
                 {
@@ -67,7 +67,7 @@ public class FurnaceController : MonoBehaviour
                     Outputs.Add(Result);
                     Ingredients.RemoveAt(i);
                     Debug.Log("Crafted");
-                    GetComponent<BuildUi>().UpdateValueSlider(0);
+                    GetComponent<Build_Ui>().UpdateValueSlider(0);
                     timer = 0;
                 }
                 break; // Exit the loop after processing the first matching ingredient

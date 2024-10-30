@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class BuildUi : MonoBehaviour
+public class Build_Ui : MonoBehaviour
 {
    [SerializeField] private GameObject PanelUI;
    [SerializeField] private Slider TimerSlider;

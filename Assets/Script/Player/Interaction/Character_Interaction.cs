@@ -20,7 +20,7 @@ public class Character_Interaction : MonoBehaviour
             Vector3.Distance(_mouseCollision.gameObject.transform.position, transform.position) <= range &&
             _mouseCollision.CompareTag("Build"))
         {
-            if (_mouseCollision.gameObject.TryGetComponent<BuildUi>(out BuildUi _b))
+            if (_mouseCollision.gameObject.TryGetComponent<Build_Ui>(out Build_Ui _b))
             {
                 _b.OpenUI();
             }
