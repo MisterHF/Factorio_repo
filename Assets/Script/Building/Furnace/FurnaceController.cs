@@ -70,8 +70,16 @@ public class FurnaceController : MonoBehaviour
                     GetComponent<Build_Ui>().UpdateValueSlider(0);
                     timer = 0;
                 }
+
                 break; // Exit the loop after processing the first matching ingredient
             }
         }
     }
+}
+
+[Serializable]
+public struct FurnaceRule
+{
+    public ScriptableObject ingredient;
+    public ScriptableObject result;
 }

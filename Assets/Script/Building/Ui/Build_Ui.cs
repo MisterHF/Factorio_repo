@@ -1,16 +1,14 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Build_Ui : MonoBehaviour
 {
-   [SerializeField] private GameObject PanelUI;
+   [SerializeField] private GameObject panelUi;
    [SerializeField] private Slider TimerSlider;
 
    public void OpenUI()
    {
-      PanelUI.SetActive(true);
+      panelUi.SetActive(true);
    }
 
    private void Start()
