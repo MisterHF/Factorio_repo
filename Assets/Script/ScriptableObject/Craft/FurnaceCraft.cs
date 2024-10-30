@@ -4,8 +4,8 @@ using UnityEngine;
 public class FurnaceCraft : ScriptableObject
 {
     [SerializeField] public string Name;
-    [SerializeField] private ItemData Item1;
-    [SerializeField] private ItemData Item2;
+    [SerializeField] public ItemData Item1;
+    [SerializeField] public ItemData Item2;
     
     public Sprite Item2Sprite => Item2 != null ? Item2.sprite : null;
 }
