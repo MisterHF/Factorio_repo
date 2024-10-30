@@ -1978,6 +1978,7 @@ MonoBehaviour:
   items:
   - {fileID: 2955016061853573164}
   inventoryPanel: {fileID: 510437051}
+  content: {fileID: 774915966}
 --- !u!114 &536176579 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3616469811500005753, guid: 706cfd78421ddfd49a1acf992d0a5108, type: 3}
