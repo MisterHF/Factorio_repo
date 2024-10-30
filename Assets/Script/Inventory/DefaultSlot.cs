@@ -1,6 +1,10 @@
+using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class DefaultSlot
+[Serializable]
+public class DefaultSlot : MonoBehaviour, IDropHandler
 {
     public ItemData data;
     public int count;
@@ -11,7 +15,22 @@ public class DefaultSlot
         count = _cout;
     }
 
-    public virtual void SetItem(ItemData d) {
+    public void OnDrop(PointerEventData eventData)
+    {
+
+        GameObject dropped = eventData.pointerDrag;
+
+        dropped.GetComponent<DraggableItem>().ParentAfterDrag.GetComponent<DefaultSlot>().data = data;
+        dropped.GetComponent<DraggableItem>().ParentAfterDrag.GetComponent<DefaultSlot>().count = count;
+        transform.GetChild(0).transform.position = dropped.GetComponent<DraggableItem>().ParentAfterDrag.transform.position;
+        transform.GetChild(0).transform.SetParent(dropped.GetComponent<DraggableItem>().ParentAfterDrag);
+        DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
+        draggableItem.ParentAfterDrag = transform;
+
+    }
+
+    public virtual void SetItem(ItemData d)
+    {
         data = d;
     }
     public virtual void UseItem() { }
