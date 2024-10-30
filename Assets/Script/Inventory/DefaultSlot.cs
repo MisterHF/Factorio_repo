@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,6 +9,12 @@ public class DefaultSlot : MonoBehaviour, IDropHandler
 {
     public ItemData data;
     public int count;
+    [SerializeField] private TextMeshProUGUI textCountItem;
+
+    private void Start()
+    {
+        textCountItem.text = count.ToString();  
+    }
 
     public DefaultSlot(ItemData _data, int _cout)
     {

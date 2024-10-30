@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,10 +11,12 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     private int countDrag;
     private ItemData dataDrag;
+  
 
     public int CountDrag {  set { countDrag = value; }}
     public ItemData Datadrag {  set { dataDrag = value; } }
     public Transform ParentAfterDrag {  get { return parentAfterDrag; } set { parentAfterDrag = value; } }
+
 
 
     public void OnBeginDrag(PointerEventData eventData)

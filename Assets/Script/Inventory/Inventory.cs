@@ -9,9 +9,14 @@ public class Inventory : MonoBehaviour
     [SerializeField] private List<DefaultSlot> items = new List<DefaultSlot>();
     [SerializeField] private GameObject inventoryPanel; // root inventory panel
     const int inventorySize = 9;
+    [SerializeField] GameObject content;
 
     private void Start()
     {
+        for (int i = 0; i < content.transform.childCount; i++) 
+        {
+            items.Add(content.transform.GetChild(i).GetComponent<DefaultSlot>());
+        }
         RefreshContent();
     }
 
@@ -63,7 +68,7 @@ public class Inventory : MonoBehaviour
         {
             if(items[i].data == null) return;
 
-            Image img = items[i].transform.GetChild(i).GetComponent<Image>();
+            Image img = items[i].transform.GetChild(0).GetComponent<Image>();
 
             if (items[i].count >= 1)
             {
