@@ -3,6 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "FurnaceCraft", menuName = "Scriptable Objects/FurnaceCraft")]
 public class FurnaceCraft : ScriptableObject
 {
-    // [SerializeField] private ItemData item1;
-    // [SerializeField] private ItemData item2;
+    [SerializeField] public string Name;
+    [SerializeField] private ItemData Item1;
+    [SerializeField] private ItemData Item2;
+    
+    public Sprite Item2Sprite => Item2 != null ? Item2.sprite : null;
 }

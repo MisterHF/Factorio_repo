@@ -197,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Iron-Ore_0: -668163136463115518
+      Iron-Ore_1: 3699704654974086730
+      Iron-Ore_2: 9017322189110087410
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

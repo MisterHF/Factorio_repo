@@ -3,75 +3,74 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GetValueFromDropDown : MonoBehaviour
 {
-    [SerializeField] private TMP_Dropdown dropDown;
-    [SerializeField] private List<TMP_Dropdown.OptionData> dropDownOption = new List<TMP_Dropdown.OptionData>();
+    [SerializeField] private TMP_Dropdown DropDown;
+    [SerializeField] private List<TMP_Dropdown.OptionData> DropDownOption = new List<TMP_Dropdown.OptionData>();
 
+    [SerializeField] private List<FurnaceCraft> FurnaceCrafts = new List<FurnaceCraft>();
+
+    private FurnaceCraft furnaceCraft;
+
+    public FurnaceCraft FurnaceCraft => furnaceCraft;
 
     public void GetDroopDownValue()
     {
-        int _dropDownIndex = dropDown.value;
-        string _dropDownText = dropDown.options[_dropDownIndex].text;
+        int _dropDownIndex = DropDown.value;
+        string _dropDownText = DropDown.options[_dropDownIndex].text;
         Debug.Log(_dropDownText);
     }
 
     [ContextMenu("Add New Craft")]
     private void AddNewCraft()
     {
-        dropDown.options.Add(new TMP_Dropdown.OptionData("Iron", null, Color.black));
+        DropDown.options.Clear();
+        DropDownOption.Clear();
 
-        dropDown.AddOptions(dropDownOption);
+        foreach (var craft in FurnaceCrafts)
+        {
+            DropDownOption.Add(new TMP_Dropdown.OptionData(craft.Name, craft.Item2Sprite, Color.white));
+        }
 
-        dropDown.RefreshShownValue();
+        DropDown.AddOptions(DropDownOption);
+        DropDown.RefreshShownValue();
     }
 
     [ContextMenu("Remove At")]
     private void RemoveCraftAt()
     {
         int index = 0;
-        if (dropDown.value == index)
+        if (DropDown.value == index)
         {
-            dropDown.value = 0;
+            DropDown.value = 0;
         }
 
-        dropDown.options.RemoveAt(index);
-        dropDown.RefreshShownValue();
-    }
-
-    [ContextMenu("Remove By Name")]
-    private void RemoveCraftName(string _locationName)
-    {
-        for (int i = 0; i < dropDown.options.Count; i++)
-        {
-            if (dropDown.options[i].text == _locationName)
-            {
-                if (dropDown.value == i)
-                {
-                    dropDown.value = 0;
-                }
-
-                dropDown.options.RemoveAt(i);
-                break;
-            }
-        }
+        DropDown.options.RemoveAt(index);
+        DropDown.RefreshShownValue();
     }
 
     [ContextMenu("AddListener To Craft")]
     private void ActionCraft()
     {
-        dropDown.onValueChanged.RemoveListener(ActionToCall);
-        dropDown.onValueChanged.AddListener(ActionToCall);
+        DropDown.onValueChanged.RemoveListener(ActionToCall);
+        DropDown.onValueChanged.AddListener(ActionToCall);
     }
 
     private void ActionToCall(int arg0)
     {
-        Debug.Log(arg0);
+        for (int i = 0; i < FurnaceCrafts.Count; i++)
+        {
+            if (FurnaceCrafts[i].name == FurnaceCrafts[arg0].name)
+            {
+                furnaceCraft = FurnaceCrafts[i];
+            }
+        }
     }
 
     private void OnDestroy()
     {
-        dropDown.onValueChanged.RemoveListener(ActionToCall);
+        DropDown.onValueChanged.RemoveListener(ActionToCall);
     }
 }
