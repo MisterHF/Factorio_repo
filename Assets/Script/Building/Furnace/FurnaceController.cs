@@ -1,11 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class FurnaceController : MonoBehaviour
 {
