@@ -1,31 +1,25 @@
-using System;
 using System.Collections.Generic;
-using UnityEditor.Rendering;
-using UnityEngine;
 using System.Linq;
-using static UnityEditor.Progress;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private List<DefaultSlot> items = new();
+
+    [SerializeField] private List<DefaultSlot> items = new List<DefaultSlot>();
     [SerializeField] private GameObject inventoryPanel; // root inventory panel
-    [SerializeField] private GameObject inventorySlots; // root inventory slot
     const int inventorySize = 9;
+    [SerializeField] GameObject content;
 
     private void Start()
     {
+        for (int i = 0; i < content.transform.childCount; i++) 
+        {
+            items.Add(content.transform.GetChild(i).GetComponent<DefaultSlot>());
+        }
         RefreshContent();
     }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I)) 
-        {
-            inventoryPanel.SetActive(!inventoryPanel.activeSelf);
-        }
-
-    }
     public void AddItem(ItemData item, int count = 1)
     {
         var slot = items.Where(x => x.data == item).ToList();
@@ -64,19 +58,26 @@ public class Inventory : MonoBehaviour
     //Utilisation de cette fonction pour forcer la fermeture de l inventaire si besoin suivant une action.
     public void CloseInventory()
     {
-      inventoryPanel?.SetActive(false);
+        inventoryPanel?.SetActive(false);
 
     }
 
     public void RefreshContent()
     {
-        for (int i = 0; i < inventorySlots.transform.childCount; i++)
+        for (int i = 0; i < items.Count; i++)
         {
-            Image img = inventorySlots.transform.GetChild(i).GetComponent<Image>();
-            
-            if (items.Count >= i)
+            if(items[i].data == null) return;
+
+            Image img = items[i].transform.GetChild(0).GetComponent<Image>();
+
+            if (items[i].count >= 1)
             {
                 img.sprite = items[i].data.sprite;
+            }
+            else if (items[i].count <= 0)
+            {
+                img.sprite = null;
+                items[i].data = null;
             }
         }
     }
@@ -84,5 +85,14 @@ public class Inventory : MonoBehaviour
     public bool IsFull()
     {
         return inventorySize == items.Count;
+    }
+    public void ShowInventory()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void HideInventory()
+    {
+        gameObject.SetActive(false);
     }
 }
