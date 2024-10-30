@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FurnaceController : MonoBehaviour
 {
@@ -11,10 +14,22 @@ public class FurnaceController : MonoBehaviour
     [SerializeField] private FurnaceCraft selectedCraft;
     [SerializeField] private ScriptableObject ingredient;
     [SerializeField] private ScriptableObject result;
+    [SerializeField] private TMP_Dropdown Dropdown;
+
+    private void Start()
+    {
+        Dropdown.onValueChanged.AddListener(delegate { GetCraft(); });
+        GetCraft(); // Initialize selectedCraft with the current dropdown value
+    }
 
     private void Update()
     {
         FurnaceHeating();
+    }
+
+    public void GetCraft()
+    {
+        selectedCraft = Dropdown.gameObject.GetComponent<GetValueFromDropDown>().FurnaceCraft;
     }
 
     private void FurnaceHeating()
@@ -24,7 +39,7 @@ public class FurnaceController : MonoBehaviour
         {
             foreach (FurnaceRule _furnaceRule in furnaceRule)
             {
-                if (_furnaceRule.ingredient == ingredient)
+                if (_furnaceRule.ingredient == ingredient && selectedCraft != null)
                 {
                     result = _furnaceRule.result;
                 }
