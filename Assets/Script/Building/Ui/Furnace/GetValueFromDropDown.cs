@@ -25,7 +25,7 @@ public class GetValueFromDropDown : MonoBehaviour
 
     public void GetDroopDownValue()
     {
-         dropDownIndex = DropDown.value;
+        dropDownIndex = DropDown.value;
         string dropDownText = DropDown.options[dropDownIndex].text;
         Debug.Log(dropDownText);
     }
@@ -38,7 +38,7 @@ public class GetValueFromDropDown : MonoBehaviour
 
         foreach (var craft in FurnaceCrafts)
         {
-            DropDownOption.Add(new TMP_Dropdown.OptionData(craft.Name, craft.Item2Sprite, Color.white));
+            DropDownOption.Add(new TMP_Dropdown.OptionData(craft.Name, craft?.Item2Sprite, Color.white));
         }
 
         DropDown.AddOptions(DropDownOption);
@@ -60,7 +60,7 @@ public class GetValueFromDropDown : MonoBehaviour
 
     private void ActionToCall(int arg0)
     {
-        furnaceCraft = FurnaceCrafts[arg0];
+        furnaceCraft = FurnaceCrafts[DropDown.value];
         Debug.Log(furnaceCraft);
     }
 
@@ -68,7 +68,7 @@ public class GetValueFromDropDown : MonoBehaviour
     {
         return furnaceCraft;
     }
-    
+
     private void OnDestroy()
     {
         DropDown.onValueChanged.RemoveListener(ActionToCall);

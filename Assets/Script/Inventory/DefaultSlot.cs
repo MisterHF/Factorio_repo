@@ -2,6 +2,7 @@ using System;
 using System.Net.NetworkInformation;
 using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
+using Unity.Properties;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,6 +14,10 @@ public class DefaultSlot : MonoBehaviour, IDropHandler
     public ItemData data;
     public int count;
     [SerializeField] private TextMeshProUGUI textCountItem;
+    private GameObject child;
+
+    public GameObject Child => child;
+
 
     private void Start()
     {
@@ -24,6 +29,12 @@ public class DefaultSlot : MonoBehaviour, IDropHandler
         textCountItem.text = count.ToString();
     }
 
+    public void Clear()
+    {
+        transform.GetChild(1).GetComponent<Image>().color = Color.clear;
+        transform.GetChild(1).GetComponent<Image>().sprite = null;
+    }
+    
     public DefaultSlot(ItemData _data, int _cout)
     {
         data = _data;
@@ -33,16 +44,31 @@ public class DefaultSlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         GameObject dropped = eventData.pointerDrag;
-
-        dropped.GetComponent<DraggableItem>().ParentAfterDrag.GetComponent<DefaultSlot>().data = data;
-        dropped.GetComponent<DraggableItem>().ParentAfterDrag.GetComponent<DefaultSlot>().count = count;
-        transform.GetChild(0).transform.position =
-            dropped.GetComponent<DraggableItem>().ParentAfterDrag.transform.position;
-        transform.GetChild(0).transform.SetParent(dropped.GetComponent<DraggableItem>().ParentAfterDrag);
         DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
+        GiveDataToOtherParent(draggableItem);
+
+        if (transform.childCount == 2)
+        {
+            SetNewTransform(draggableItem);
+        }
+
+        child = draggableItem.gameObject;
         draggableItem.ParentAfterDrag = transform;
         textCountItem.text = count.ToString();
     }
+
+    private void GiveDataToOtherParent(DraggableItem _dragged)
+    {
+        _dragged.ParentAfterDrag.GetComponent<DefaultSlot>().data = data;
+        _dragged.ParentAfterDrag.GetComponent<DefaultSlot>().count = count;
+    }
+
+    private void SetNewTransform(DraggableItem _dragged)
+    {
+        transform.GetChild(1).transform.position = _dragged.ParentAfterDrag.transform.position;
+        transform.GetChild(1).SetParent(_dragged.ParentAfterDrag.transform);
+    }
+
 
     public virtual void SetItem(ItemData d, int i)
     {

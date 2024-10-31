@@ -75,7 +75,7 @@ public class Inventory : MonoBehaviour
         {
             if(items[i].data == null) return;
 
-            Image img = items[i].transform.GetChild(0).GetComponent<Image>();
+            Image img = items[i].transform.GetChild(1).GetComponent<Image>();
 
             if (items[i].count >= 1)
             {

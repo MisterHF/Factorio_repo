@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class FurnaceController : MonoBehaviour
 {
@@ -41,32 +43,33 @@ public class FurnaceController : MonoBehaviour
     {
         SelectedCraft = Dropdown.gameObject.GetComponent<GetValueFromDropDown>().ChangeCraftIntoFurnace();
     }
-    
+
     private void FurnaceHeating()
     {
         if (SelectedCraft == null || IngredientSlot.count == 0) return;
-
-        for (int i = 0; i < IngredientSlot.count; i++)
+        
+        if (IngredientSlot.data == SelectedCraft.Item1)
         {
-            if (IngredientSlot.data == SelectedCraft.Item1)
+            if (timer <= EndTimer)
             {
-                if (timer <= EndTimer)
+                timer += FurnaceSpeed * Time.deltaTime;
+                GetComponent<Build_Ui>().UpdateValueSlider(timer);
+            }
+            else
+            {
+                Result = SelectedCraft.Item2;
+                ResultSlot.data = Result;
+                ResultSlot.count += 1;
+                IngredientSlot.count -= 1;
+                ResultSlot.transform.GetChild(1).GetComponent<Image>().sprite = Result.sprite;
+                Debug.Log("Crafted");
+                GetComponent<Build_Ui>().UpdateValueSlider(0);
+                timer = 0;
+                if (IngredientSlot.count <= 0)
                 {
-                    timer += FurnaceSpeed * Time.deltaTime;
-                    GetComponent<Build_Ui>().UpdateValueSlider(timer);
+                    IngredientSlot.data = null;
+                    IngredientSlot.Clear();
                 }
-                else
-                {
-                    Result = SelectedCraft.Item2;
-                    ResultSlot.data = Result;
-                    ResultSlot.count += 1;
-                    IngredientSlot.count -= 1;
-                    Debug.Log("Crafted");
-                    GetComponent<Build_Ui>().UpdateValueSlider(0);
-                    timer = 0;
-                }
-
-                break;
             }
         }
     }
