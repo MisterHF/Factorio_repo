@@ -1,40 +1,53 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class DraggableItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    private Transform parentAfterDrag;
+    private Transform parent;
 
-    [SerializeField] private Image image;
+    [SerializeField] private Image Image;
 
     private int countDrag;
     private ItemData dataDrag;
-  
 
-    public int CountDrag {  set { countDrag = value; }}
-    public ItemData Datadrag {  set { dataDrag = value; } }
-    public Transform ParentAfterDrag {  get { return parentAfterDrag; } set { parentAfterDrag = value; } }
 
+    public int CountDrag
+    {
+        get { return countDrag; }
+    }
+
+    public ItemData Datadrag
+    {
+        get { return dataDrag; }
+    }
+
+    public Transform Parent
+    {
+        get { return parent; }
+        set { parent = value; }
+    }
 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        parent = transform.parent;
+        if (parent.GetComponent<DefaultSlot>().Data == null) return;
         Debug.Log("start drag");
-        parentAfterDrag = transform.parent;
-        dataDrag = parentAfterDrag.GetComponent<DefaultSlot>().data;
-        countDrag = parentAfterDrag.GetComponent<DefaultSlot>().count;
-        parentAfterDrag.GetComponent<DefaultSlot>().count = 0;
-        parentAfterDrag.GetComponent<DefaultSlot>().data = null;
+
+        dataDrag = parent.GetComponent<DefaultSlot>().Data;
+        countDrag = parent.GetComponent<DefaultSlot>().Count;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
-        image.raycastTarget = false;
 
+        Image.raycastTarget = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (parent.GetComponent<DefaultSlot>().Data == null) return;
         Debug.Log("drag");
         transform.position = Input.mousePosition;
     }
@@ -42,11 +55,13 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("end drag");
-        transform.SetParent(parentAfterDrag);  
-        transform.position = parentAfterDrag.position;
-        parentAfterDrag.GetComponent<DefaultSlot>().data = dataDrag;
-        parentAfterDrag.GetComponent<DefaultSlot>().count = countDrag;
-        image.raycastTarget = true;
 
+        transform.SetParent(parent);
+        transform.position = parent.position;
+
+        dataDrag = null;
+        countDrag = 0;
+
+        Image.raycastTarget = true;
     }
 }

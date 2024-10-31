@@ -22,12 +22,12 @@ public class CraftingSlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         GameObject dropped = eventData.pointerDrag;
-        dropped.GetComponent<DraggableItem>().ParentAfterDrag.GetComponent<DefaultSlot>().data = data;
-        dropped.GetComponent<DraggableItem>().ParentAfterDrag.GetComponent<DefaultSlot>().count = count;
+        dropped.GetComponent<DraggableItem>().Parent.GetComponent<DefaultSlot>().Data = data;
+        dropped.GetComponent<DraggableItem>().Parent.GetComponent<DefaultSlot>().Count = count;
         transform.GetChild(0).transform.position =
-            dropped.GetComponent<DraggableItem>().ParentAfterDrag.transform.position;
-        transform.GetChild(0).transform.SetParent(dropped.GetComponent<DraggableItem>().ParentAfterDrag);
+            dropped.GetComponent<DraggableItem>().Parent.transform.position;
+        transform.GetChild(0).transform.SetParent(dropped.GetComponent<DraggableItem>().Parent);
         DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
-        draggableItem.ParentAfterDrag = transform;
+        draggableItem.Parent = transform;
     }
 }

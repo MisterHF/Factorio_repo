@@ -226,9 +226,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b78bd5a2572c2549b5c378d432968e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
-  count: 0
-  textCountItem: {fileID: 3616469811500005753}
+  Data: {fileID: 0}
+  Count: 0
+  TextCountItem: {fileID: 3616469811500005753}
+  Img: {fileID: 3433405943069820602}
+  CanDropped: 1
+  AcceptAll: 1
+  ItemAccepted: {fileID: 0}
 --- !u!1 &8978561108361923044
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,4 +321,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3882c538ba784b44b0fa233fdbb0abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 3433405943069820602}
+  Image: {fileID: 3433405943069820602}

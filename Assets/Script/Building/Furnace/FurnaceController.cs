@@ -42,13 +42,17 @@ public class FurnaceController : MonoBehaviour
     public void GetCraft()
     {
         SelectedCraft = Dropdown.gameObject.GetComponent<GetValueFromDropDown>().ChangeCraftIntoFurnace();
+        if (SelectedCraft != null)
+        {
+            IngredientSlot.ItemAccepted = SelectedCraft.Item1;
+        }
     }
 
     private void FurnaceHeating()
     {
-        if (SelectedCraft == null || IngredientSlot.count == 0) return;
-        
-        if (IngredientSlot.data == SelectedCraft.Item1)
+        if (SelectedCraft == null || IngredientSlot.Count == 0) return;
+
+        if (IngredientSlot.Data == SelectedCraft.Item1)
         {
             if (timer <= EndTimer)
             {
@@ -58,17 +62,18 @@ public class FurnaceController : MonoBehaviour
             else
             {
                 Result = SelectedCraft.Item2;
-                ResultSlot.data = Result;
-                ResultSlot.count += 1;
-                IngredientSlot.count -= 1;
+                ResultSlot.Data = Result;
+                ResultSlot.Count += 1;
+                IngredientSlot.Count -= 1;
                 ResultSlot.transform.GetChild(1).GetComponent<Image>().sprite = Result.sprite;
+                ResultSlot.transform.GetChild(1).GetComponent<Image>().color = Color.white;
                 Debug.Log("Crafted");
                 GetComponent<Build_Ui>().UpdateValueSlider(0);
                 timer = 0;
-                if (IngredientSlot.count <= 0)
+                if (IngredientSlot.Count <= 0)
                 {
-                    IngredientSlot.data = null;
-                    IngredientSlot.Clear();
+                    IngredientSlot.Data = null;
+                    // IngredientSlot.Clear();
                 }
             }
         }

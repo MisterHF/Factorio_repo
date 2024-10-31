@@ -11,7 +11,7 @@ public class UpdateForCrafting : MonoBehaviour
     private void Start()
     {
         slot = GetComponent<DefaultSlot>();
-        child = slot.Child;
+        // child = slot.Child;
     }
 
     private void Update()
@@ -27,7 +27,7 @@ public class UpdateForCrafting : MonoBehaviour
 
     private void UpdateForCraft()
     {
-        child.GetComponent<Image>().sprite = slot.data.sprite;
+        child.GetComponent<Image>().sprite = slot.Data.sprite;
         child.GetComponent<Image>().color = Color.white;
     }
 }
