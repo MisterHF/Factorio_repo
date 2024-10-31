@@ -5,10 +5,11 @@ public class Character_Interaction : MonoBehaviour
 {
     [SerializeField] private float range;
 
-    public void OpenEquipment(InputAction.CallbackContext context)
+    public void OpenBuild(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
+            CheckCollision();
         }
     }
 

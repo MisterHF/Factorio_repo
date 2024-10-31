@@ -21,21 +21,28 @@ public class Inventory : MonoBehaviour
     }
 
     public void AddItem(ItemData item, int count = 1)
+{
+    var slot = items.Where(x => x.data == item).ToList();
+
+    if (slot.Any())
     {
-        var slot = items.Where(x => x.data == item).ToList();
-
-        if (slot.Any())
-        {
-            slot[0].count += count;
-        }
-        else
-        {
-            if (items.Count < inventorySize)
-                items.Add(new(item, count));
-        }
-
+        slot[0].data = item;
+        slot[0].count += count;
         RefreshContent();
     }
+    else
+    {
+        var emptySlot = items.FirstOrDefault(x => x.data == null);
+        if (emptySlot != null)
+        {
+            emptySlot.data = item;
+            emptySlot.count = count;
+            RefreshContent();
+        }
+    }
+
+    RefreshContent();
+}
     public void RemoveItem(ItemData item, int count)
     {
         var slot = items.Where(x => x.data == item).ToList();
@@ -47,7 +54,7 @@ public class Inventory : MonoBehaviour
             if (slot[0].count <= 0)
             {
                 items.Remove(slot[0]);
-                slot[0].SetItem(null);
+                slot[0].SetItem(null, 0);
             }
         }
 
@@ -73,10 +80,12 @@ public class Inventory : MonoBehaviour
             if (items[i].count >= 1)
             {
                 img.sprite = items[i].data.sprite;
+                img.color = Color.white;
             }
             else if (items[i].count <= 0)
             {
                 img.sprite = null;
+                img.color = Color.clear;
                 items[i].data = null;
             }
         }

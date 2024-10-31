@@ -6,6 +6,7 @@ public class Character_Mining : MonoBehaviour
 {
     [SerializeField] private float miningSpeed;
     [SerializeField] private int range;
+    [SerializeField] private Inventory inventory;
     private bool isMining;
     private Coroutine mine;
 
@@ -33,10 +34,10 @@ public class Character_Mining : MonoBehaviour
         {
             if (_mouseCollision.TryGetComponent<Pickeable>(out Pickeable _p))
             {
-                float _delay = _p.ScriptableObject.durability;
+                float _delay = _p.delay;
                 _delay = _delay * miningSpeed;
                 yield return new WaitForSeconds(_delay);
-                //invenotyPLayer.Add(p.ScriptableObject);
+                inventory.AddItem(_p.ScriptableObject, 1);
                 Debug.Log("Is Mined !");
                 mine = StartCoroutine(Mine());
             }
