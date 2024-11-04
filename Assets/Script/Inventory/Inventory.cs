@@ -21,33 +21,40 @@ public class Inventory : MonoBehaviour
     }
 
     public void AddItem(ItemData item, int count = 1)
+{
+    var slot = items.Where(x => x.Data == item).ToList();
+
+    if (slot.Any())
     {
-        var slot = items.Where(x => x.data == item).ToList();
-
-        if (slot.Any())
-        {
-            slot[0].count += count;
-        }
-        else
-        {
-            if (items.Count < inventorySize)
-                items.Add(new(item, count));
-        }
-
+        slot[0].Data = item;
+        slot[0].Count += count;
         RefreshContent();
     }
+    else
+    {
+        var emptySlot = items.FirstOrDefault(x => x.Data == null);
+        if (emptySlot != null)
+        {
+            emptySlot.Data = item;
+            emptySlot.Count = count;
+            RefreshContent();
+        }
+    }
+
+    RefreshContent();
+}
     public void RemoveItem(ItemData item, int count)
     {
-        var slot = items.Where(x => x.data == item).ToList();
+        var slot = items.Where(x => x.Data == item).ToList();
 
         if (slot.Any())
         {
-            slot[0].count -= count;
+            slot[0].Count -= count;
 
-            if (slot[0].count <= 0)
+            if (slot[0].Count <= 0)
             {
                 items.Remove(slot[0]);
-                slot[0].SetItem(null);
+                slot[0].SetItem(null, 0);
             }
         }
 
@@ -66,18 +73,20 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < items.Count; i++)
         {
-            if(items[i].data == null) return;
+            if(items[i].Data == null) return;
 
-            Image img = items[i].transform.GetChild(0).GetComponent<Image>();
+            Image img = items[i].transform.GetChild(1).GetComponent<Image>();
 
-            if (items[i].count >= 1)
+            if (items[i].Count >= 1)
             {
-                img.sprite = items[i].data.sprite;
+                img.sprite = items[i].Data.sprite;
+                img.color = Color.white;
             }
-            else if (items[i].count <= 0)
+            else if (items[i].Count <= 0)
             {
                 img.sprite = null;
-                items[i].data = null;
+                img.color = Color.clear;
+                items[i].Data = null;
             }
         }
     }
