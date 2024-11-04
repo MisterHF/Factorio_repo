@@ -15,9 +15,15 @@ public class DefaultSlot : MonoBehaviour, IDropHandler
     public ItemData Data;
     public int Count;
     [SerializeField] private TextMeshProUGUI TextCountItem;
-    [SerializeField] private Image Img;
+    [SerializeField] private Image Img ;
+
+    public Image Img1 { get { return Img; } set { Img = value; } }
+
     [SerializeField] private bool CanDropped = true;
-    [SerializeField] private bool AcceptAll = true;
+    public bool AcceptAll = true;
+    [SerializeField] private bool IsHighlight = false;
+
+    public bool IsHighlighted { get { return IsHighlight; } set { IsHighlight = value; } }
     [HideInInspector] public ItemData ItemAccepted;
 
     private void Start()
@@ -28,7 +34,7 @@ public class DefaultSlot : MonoBehaviour, IDropHandler
     private void Update()
     {
         TextCountItem.text = Count.ToString();
-        if (Count <= 0)
+        if (Count <= 0 && !IsHighlight)
         {
             ChangeColorAndSprite();
         }

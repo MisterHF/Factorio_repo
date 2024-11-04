@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,12 @@ public class CraftingController : MonoBehaviour
     [SerializeField] private List<CraftingRule> craft;
     [SerializeField] private GameObject buttonPrefab;
 
+    [SerializeField] private CraftingRule SelectedCraft;
+
+    private List<DefaultSlot> slots = new List<DefaultSlot>();
+
+    [SerializeField] GameObject ParentSlot;
+    [SerializeField] DefaultSlot resultCrafting;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,9 +31,15 @@ public class CraftingController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Crafting()
     {
         
+       DefaultSlot[] defaultSlot = ParentSlot.GetComponentsInChildren<DefaultSlot>();
+        for (int i = 0; i < SelectedCraft.requires.Count; i++)
+        {
+            if(SelectedCraft.requires[i] != defaultSlot[i].Data) { return; }
+        }
+        resultCrafting.Data = SelectedCraft.result;
+        resultCrafting.Count = 1; 
     }
 }
