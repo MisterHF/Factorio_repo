@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class FurnaceController : MonoBehaviour
 {
@@ -40,33 +42,39 @@ public class FurnaceController : MonoBehaviour
     public void GetCraft()
     {
         SelectedCraft = Dropdown.gameObject.GetComponent<GetValueFromDropDown>().ChangeCraftIntoFurnace();
+        if (SelectedCraft != null)
+        {
+            IngredientSlot.ItemAccepted = SelectedCraft.Item1;
+        }
     }
-    
+
     private void FurnaceHeating()
     {
-        if (SelectedCraft == null || IngredientSlot.count == 0) return;
+        if (SelectedCraft == null || IngredientSlot.Count == 0) return;
 
-        for (int i = 0; i < IngredientSlot.count; i++)
+        if (IngredientSlot.Data == SelectedCraft.Item1)
         {
-            if (IngredientSlot.data == SelectedCraft.Item1)
+            if (timer <= EndTimer)
             {
-                if (timer <= EndTimer)
+                timer += FurnaceSpeed * Time.deltaTime;
+                GetComponent<Build_Ui>().UpdateValueSlider(timer);
+            }
+            else
+            {
+                Result = SelectedCraft.Item2;
+                ResultSlot.Data = Result;
+                ResultSlot.Count += 1;
+                IngredientSlot.Count -= 1;
+                ResultSlot.transform.GetChild(1).GetComponent<Image>().sprite = Result.sprite;
+                ResultSlot.transform.GetChild(1).GetComponent<Image>().color = Color.white;
+                Debug.Log("Crafted");
+                GetComponent<Build_Ui>().UpdateValueSlider(0);
+                timer = 0;
+                if (IngredientSlot.Count <= 0)
                 {
-                    timer += FurnaceSpeed * Time.deltaTime;
-                    GetComponent<Build_Ui>().UpdateValueSlider(timer);
+                    IngredientSlot.Data = null;
+                    // IngredientSlot.Clear();
                 }
-                else
-                {
-                    Result = SelectedCraft.Item2;
-                    ResultSlot.data = Result;
-                    ResultSlot.count += 1;
-                    IngredientSlot.count -= 1;
-                    Debug.Log("Crafted");
-                    GetComponent<Build_Ui>().UpdateValueSlider(0);
-                    timer = 0;
-                }
-
-                break;
             }
         }
     }

@@ -5,10 +5,13 @@ public class Resources : ItemData
 {
    
     public float durability;
-    public enum Type
-    {
-        ORE, GEM, OTHER
-    }
 
     public Type type;
+}
+
+public enum Type
+{
+    ORE,
+    GEM,
+    OTHER
 }
