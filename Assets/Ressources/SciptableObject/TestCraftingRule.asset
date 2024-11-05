@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe49fe1c758196d489ac40d3f3807555, type: 3}
   m_Name: TestCraftingRule
   m_EditorClassIdentifier: 
-  result: {fileID: 11400000, guid: c339b2ecfb21f8841b924f0260df5210, type: 2}
+  result: {fileID: 11400000, guid: fe2eb8311eba6a04bbb2c3c58ac6e707, type: 2}
   requires:
   - {fileID: 11400000, guid: d186596fb9c9186419552fb863562c2e, type: 2}
+  - {fileID: 11400000, guid: 0ad28e65250c60f489045f2aa977c094, type: 2}
+  - {fileID: 11400000, guid: 66407d5cb60bc8a47ab501f309fc353c, type: 2}
+  countPerRaquires: 020000000400000003000000
