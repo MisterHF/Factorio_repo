@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CraftingController : MonoBehaviour
 {
     [SerializeField] private GameObject craftPanel; //UI
-    [SerializeField] Transform content; // Ressource entrée
+    [SerializeField] Transform content; // Ressource entrï¿½e
 
     [SerializeField] private List<CraftingRule> craft;
     [SerializeField] private GameObject buttonPrefab;
@@ -20,10 +20,17 @@ public class CraftingController : MonoBehaviour
 
     [SerializeField] private GameObject ParentSlot;
     [SerializeField] private DefaultSlot resultCrafting;
+    [SerializeField] private List<GameObject> allButtonsInContent;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        UpdateCraftPossibility();
+    }
+
+    public void UpdateCraftPossibility()
+    {
+        DestroyAllButtons();
         for (int i = 0; i < craft.Count; i++)
         {
             GameObject btn = Instantiate(buttonPrefab, content);
@@ -31,6 +38,8 @@ public class CraftingController : MonoBehaviour
             btn.transform.GetChild(1).GetComponent<Image>().sprite = craft[i].result.sprite;
             btn.GetComponent<SpawnRequireSlots>().RequireSlot1 = craft[i];
             btn.GetComponent<SpawnRequireSlots>().CraftingController = this;
+
+            allButtonsInContent.Add(btn);
         }
     }
 
@@ -53,6 +62,22 @@ public class CraftingController : MonoBehaviour
                 if (defaultSlot[i].Count > 0)
                     defaultSlot[i].Count -= SelectedCraft.countPerRaquires[i];
             }
+        }
+    }
+
+    public void AddCraft(CraftingRule NewCraft)
+    {
+        if (craft.Contains(NewCraft)) {  return; }
+
+        craft.Add(NewCraft);
+        UpdateCraftPossibility();
+    }
+
+    private void DestroyAllButtons()
+    {
+        for (int i = 0; i < allButtonsInContent.Count; i++) 
+        {
+            Destroy(allButtonsInContent[i]);
         }
     }
 }
