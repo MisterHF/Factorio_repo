@@ -9,7 +9,7 @@ public class CraftingController : MonoBehaviour
     [SerializeField] private GameObject craftPanel; //UI
     [SerializeField] Transform content; // Ressource entr�e
 
-    [SerializeField] private List<CraftingRule> craft;
+    
     [SerializeField] private GameObject buttonPrefab;
 
     [SerializeField] private CraftingRule SelectedCraft;
@@ -22,6 +22,10 @@ public class CraftingController : MonoBehaviour
     [SerializeField] private DefaultSlot resultCrafting;
     [SerializeField] private List<GameObject> allButtonsInContent;
 
+    private void Awake()
+    {
+        CrafterDataManager.instance.addCraftEvent += UpdateCraftPossibility;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,12 +35,12 @@ public class CraftingController : MonoBehaviour
     public void UpdateCraftPossibility()
     {
         DestroyAllButtons();
-        for (int i = 0; i < craft.Count; i++)
+        for (int i = 0; i < CrafterDataManager.instance.crafts.Count; i++)
         {
             GameObject btn = Instantiate(buttonPrefab, content);
-            btn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = craft[i].result.name;
-            btn.transform.GetChild(1).GetComponent<Image>().sprite = craft[i].result.sprite;
-            btn.GetComponent<SpawnRequireSlots>().RequireSlot1 = craft[i];
+            btn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = CrafterDataManager.instance.crafts[i].result.name;
+            btn.transform.GetChild(1).GetComponent<Image>().sprite = CrafterDataManager.instance.crafts[i].result.sprite;
+            btn.GetComponent<SpawnRequireSlots>().RequireSlot1 = CrafterDataManager.instance.crafts[i];
             btn.GetComponent<SpawnRequireSlots>().CraftingController = this;
 
             allButtonsInContent.Add(btn);
@@ -65,14 +69,6 @@ public class CraftingController : MonoBehaviour
         }
     }
 
-    public void AddCraft(CraftingRule NewCraft)
-    {
-        if (craft.Contains(NewCraft)) {  return; }
-
-        craft.Add(NewCraft);
-        UpdateCraftPossibility();
-    }
-
     private void DestroyAllButtons()
     {
         for (int i = 0; i < allButtonsInContent.Count; i++) 
@@ -80,4 +76,5 @@ public class CraftingController : MonoBehaviour
             Destroy(allButtonsInContent[i]);
         }
     }
+
 }

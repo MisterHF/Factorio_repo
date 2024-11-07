@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class ResearchController : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
-    [SerializeField] private CraftingController crafter;
     [SerializeField] private CraftingRule resultResearch;
     [SerializeField] List<DictionaryElements<ItemData, int>> requires;
 
@@ -24,7 +23,7 @@ public class ResearchController : MonoBehaviour
             inventory.RemoveItem(requires[i].key, requires[i].value);
         }
 
-        crafter.AddCraft(resultResearch);
+        CrafterDataManager.instance.AddCraft(resultResearch);
         GetComponent<Button>().interactable = false;
     }
 }
