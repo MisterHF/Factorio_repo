@@ -39,6 +39,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
         dataDrag = parent.GetComponent<DefaultSlot>().Data;
         countDrag = parent.GetComponent<DefaultSlot>().Count;
+
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
 

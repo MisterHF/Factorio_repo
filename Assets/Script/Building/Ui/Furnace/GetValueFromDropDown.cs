@@ -15,6 +15,9 @@ public class GetValueFromDropDown : MonoBehaviour
     [SerializeField] private List<FurnaceCraft> FurnaceCrafts = new List<FurnaceCraft>();
 
     private FurnaceCraft furnaceCraft;
+
+    public FurnaceCraft FurnaceCraft => furnaceCraft;
+
     private int dropDownIndex;
 
     private void Start()
@@ -60,13 +63,9 @@ public class GetValueFromDropDown : MonoBehaviour
 
     private void ActionToCall(int arg0)
     {
-        furnaceCraft = FurnaceCrafts[DropDown.value];
+        dropDownIndex = DropDown.value;
+        furnaceCraft = FurnaceCrafts[dropDownIndex];
         Debug.Log(furnaceCraft);
-    }
-
-    public FurnaceCraft ChangeCraftIntoFurnace()
-    {
-        return furnaceCraft;
     }
 
     private void OnDestroy()

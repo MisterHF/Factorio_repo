@@ -1,16 +1,9 @@
-using System;
-using System.Net.NetworkInformation;
-using Microsoft.Unity.VisualStudio.Editor;
-using TMPro;
-using Unity.Properties;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
-using Image = UnityEngine.UI.Image;
+using TMPro;
+using UnityEngine.UI;
 
-[Serializable]
-public class DefaultSlot : MonoBehaviour, IDropHandler
+public class DefaultSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
     public ItemData Data;
     public int Count;
@@ -42,39 +35,40 @@ public class DefaultSlot : MonoBehaviour, IDropHandler
         if (!AcceptAll)
         {
             if (draggableItem.Datadrag == ItemAccepted)
-                DropItem();
+                DropItem(draggableItem);
         }
         else
         {
-            DropItem();
-        }
-
-
-        void DropItem()
-        {
-            if (draggableItem.Datadrag == null) return;
-
-            if (Data == draggableItem.Datadrag)
-            {
-                Count += draggableItem.CountDrag;
-                draggableItem.Parent.GetComponent<DefaultSlot>().Data = null;
-                draggableItem.Parent.GetComponent<DefaultSlot>().Count = 0;
-                draggableItem.Parent.GetComponent<DefaultSlot>().ChangeColorAndSprite();
-                ChangeColorAndSprite();
-                TextCountItem.text = Count.ToString();
-            }
-            else
-            {
-                GiveDataToOtherParent(draggableItem);
-                Data = draggableItem.Datadrag;
-                Count = draggableItem.CountDrag;
-                ChangeColorAndSprite();
-                TextCountItem.text = Count.ToString();
-            }
-            
+            DropItem(draggableItem);
         }
     }
 
+    private void DropItem(DraggableItem _draggableItem)
+    {
+        if (_draggableItem.Datadrag == null) return;
+
+        if (Data == _draggableItem.Datadrag && transform != _draggableItem.Parent)
+        {
+            Count += _draggableItem.CountDrag;
+            _draggableItem.Parent.GetComponent<DefaultSlot>().Data = null;
+            _draggableItem.Parent.GetComponent<DefaultSlot>().Count = 0;
+            _draggableItem.Parent.GetComponent<DefaultSlot>().ChangeColorAndSprite();
+            ChangeColorAndSprite();
+            TextCountItem.text = Count.ToString();
+        }
+        else if (transform == _draggableItem.Parent)
+        {
+            return;
+        }
+        else
+        {
+            GiveDataToOtherParent(_draggableItem);
+            Data = _draggableItem.Datadrag;
+            Count = _draggableItem.CountDrag;
+            ChangeColorAndSprite();
+            TextCountItem.text = Count.ToString();
+        }
+    }
 
     private void GiveDataToOtherParent(DraggableItem _dragged)
     {
@@ -96,7 +90,6 @@ public class DefaultSlot : MonoBehaviour, IDropHandler
         }
     }
 
-
     public virtual void SetItem(ItemData d, int i)
     {
         Data = d;
@@ -105,5 +98,14 @@ public class DefaultSlot : MonoBehaviour, IDropHandler
 
     public virtual void UseItem()
     {
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (Data != null && Data.Type == ObjectType.Building)
+        {
+            Building building = (Building)Data;
+            EventMaster.TriggerBuildingPrefabSet(building);
+        }
     }
 }
