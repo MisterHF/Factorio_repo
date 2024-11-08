@@ -85,8 +85,7 @@ public class Character_Build : MonoBehaviour
     private void PlaceObject()
     {
         Inventory.RemoveItem(buildingPrefab, 1);
-        Instantiate(buildingPrefab.prefab, previewObject.transform.position, Quaternion.identity);
-        Destroy(previewObject);
+        previewObject.transform.position = GetMousePositionInWorld2D();
         buildingPrefab = null;
         previewObject = null;
     }

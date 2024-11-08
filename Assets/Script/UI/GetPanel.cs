@@ -22,22 +22,34 @@ public class GetPanel : MonoBehaviour
         {
             Destroy(this);
         }
-
         for (int i = 0; i < transform.childCount; ++i)
         {
             panelList.Add(transform.GetChild(i).gameObject);
         }
     }
-    
-    public GameObject GetPanelByName(string name)
+
+    public void AddPanelToOpen(GameObject _panel)
     {
         for (int i = 0; i < panelList.Count; i++)
         {
-            if (panelList[i].name == name)
+            if (_panel == panelList[i])
+            {
+                return;
+            }
+        }
+        panelList.Add(_panel);
+    }
+
+    public GameObject GetPanelByObject(GameObject _g)
+    {
+        for (int i = 0; i < panelList.Count; i++)
+        {
+            if (panelList[i] == _g)
             {
                 return panelList[i];
             }
         }
+
         return null;
     }
 }

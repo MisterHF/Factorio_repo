@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FurnaceController : MonoBehaviour
+public class FurnaceController : Controller
 {
     //Float and Int
     [SerializeField] private float HeatResistance;
@@ -36,6 +36,16 @@ public class FurnaceController : MonoBehaviour
     {
         FurnaceHeating();
         GetCraft();
+    }
+
+    public override ItemData GetItem()
+    {
+        return base.GetItem();
+    }
+
+    public override void SetItem(ItemData _data)
+    {
+        base.SetItem(_data);
     }
 
     private void GetCraft()

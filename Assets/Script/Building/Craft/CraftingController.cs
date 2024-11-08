@@ -4,11 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CraftingController : MonoBehaviour
+public class CraftingController : Controller
 {
 
     [SerializeField] private GameObject craftPanel; //UI
-    [SerializeField] Transform content; // Ressource entr�e
+    [SerializeField] Transform content; // Ressource entrï¿½e
 
     
     [SerializeField] private GameObject buttonPrefab;
@@ -32,6 +32,7 @@ public class CraftingController : MonoBehaviour
     {
         UpdateCraftPossibility();
     }
+    
 
     public void UpdateCraftPossibility()
     {

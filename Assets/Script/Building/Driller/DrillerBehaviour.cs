@@ -1,20 +1,24 @@
 using System;
 using System.Collections;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DrillerBehaviour : MonoBehaviour
+public class DrillerBehaviour : Controller
 {
     [SerializeField] private float miningSpeed;
     [SerializeField] private int range;
-    [SerializeField] private DefaultSlot inventoryMiner;
+    private DefaultSlot inventoryMiner;
     private Coroutine mine;
     private bool isStarted = false;
-
+    private BuildUi ui;
 
     private void Start()
     {
+        ui = GetComponent<BuildUi>();
+
+        inventoryMiner = ui.OpenPrefab.GetComponent<GetSlot>().Slot;
         mine = StartCoroutine(Mine());
     }
 
@@ -24,6 +28,11 @@ public class DrillerBehaviour : MonoBehaviour
         {
             StartCoroutine(Mine());
         }
+    }
+
+    private void OnDestroy()
+    {
+        StopCoroutine(Mine());
     }
 
 

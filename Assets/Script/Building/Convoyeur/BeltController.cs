@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
-using Unity.VisualScripting;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BeltController : MonoBehaviour
 {
@@ -62,6 +61,14 @@ public class BeltController : MonoBehaviour
             }
             else
             {
+                Collider2D[] collision = Physics2D.OverlapCircleAll(transform.position, 2).Where(x => x.gameObject != transform.gameObject).ToArray();
+                if (collision[0].GetComponent<BuildUi>())
+                {
+                    if (collision[0].TryGetComponent<BuildUi>(out BuildUi _p))
+                    {
+                        // _p.OpenPrefab.GetComponent<_p.>()
+                    }
+                }
                 index++;
             }
         }
