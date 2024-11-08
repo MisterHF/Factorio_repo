@@ -1,7 +1,10 @@
+
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using TMPro;
-using UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
+
 
 public class DefaultSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
@@ -9,21 +12,33 @@ public class DefaultSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     public int Count;
     [SerializeField] private TextMeshProUGUI TextCountItem;
     [SerializeField] private Image Img;
+
+    public Image Img1 { get { return Img; } set { Img = value; } }
+
     [SerializeField] private bool CanDropped = true;
-    [SerializeField] private bool AcceptAll = true;
+    public bool AcceptAll = true;
+    [SerializeField] private bool IsHighlight = false;
+
+    public bool IsHighlighted { get { return IsHighlight; } set { IsHighlight = value; } }
     [HideInInspector] public ItemData ItemAccepted;
+    private Color color = Color.white;
 
     private void Start()
     {
         TextCountItem.text = Count.ToString();
+        color!.a = 0.25f;
     }
 
     private void Update()
     {
         TextCountItem.text = Count.ToString();
-        if (Count <= 0)
+        if (Count <= 0 && !IsHighlight)
         {
             ChangeColorAndSprite();
+        }
+        else if (IsHighlight && Data == null) 
+        {
+            Img1.color = color;
         }
     }
 

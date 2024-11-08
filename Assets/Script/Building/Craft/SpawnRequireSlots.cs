@@ -5,11 +5,15 @@ using UnityEngine.Serialization;
 public class SpawnRequireSlots : MonoBehaviour
 {
     private GameObject CraftingSlots;
-    private CraftingRule RequireSlot;
+    private CraftingRule Craft;
 
-    [SerializeField] private GameObject SlotPrefab;
+    [SerializeField] private GameObject Slot;
+    [HideInInspector] public List <DefaultSlot> slots = new List <DefaultSlot> ();
 
-    public CraftingRule RequireSlot1 { get { return RequireSlot; } set { RequireSlot = value; } }
+    private CraftingController craftingController;
+
+    public CraftingController CraftingController { set { craftingController = value; } }
+    public CraftingRule RequireSlot1 { get { return Craft; } set { Craft = value; } }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,12 +27,27 @@ public class SpawnRequireSlots : MonoBehaviour
         {
             for (int i = 0; i < CraftingSlots.transform.childCount; i++)
             {
+                slots.Clear ();
                 Destroy(CraftingSlots.transform.GetChild(i).gameObject);
             }
         }
-        for (int i = 0; i < RequireSlot.requires.Count; i++)
+
+        craftingController.SelectedCraft1 = Craft;
+
+
+        for (int i = 0; i < Craft.requires.Count; i++)
         {
-            GameObject slot = Instantiate(SlotPrefab, CraftingSlots.transform);
+            GameObject slot = Instantiate(Slot, CraftingSlots.transform);
+            DefaultSlot defaultSlot = slot.GetComponent<DefaultSlot>();
+            slots.Add (defaultSlot);
+            defaultSlot.ItemAccepted = Craft.requires[i];
+            defaultSlot.AcceptAll = false;
+            defaultSlot.IsHighlighted = true;
+            Color color = defaultSlot.Img1.color;
+            color = Color.white;
+            color.a = 0.25f;
+            defaultSlot.Img1.color = color;
+            defaultSlot.Img1.sprite = Craft.requires[i].sprite;
         }
     }
 }
