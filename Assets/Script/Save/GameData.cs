@@ -1,19 +1,26 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct InventoryItem
+{
+    public int id;
+    public int count;
+}
+
+[System.Serializable]
 public class GameData
 {
-    // PlayerData
-    public float BASE_SPEED;
-    public float MINING_SPEED;
-    public int MINING_RANGE;
     // Le transform du personnage ou sinon lui laisser un spawn par defaut => a definir
 
 
     // Inventory Player
-    public int COUNT;
-    public int IDITEM;
-    
+    //public string COUNT;
+    //public string IDITEM;
 
+    public List<InventoryItem> inventoryItems;
+   
 
     // MinerData
     //public float MINING_SPEED;

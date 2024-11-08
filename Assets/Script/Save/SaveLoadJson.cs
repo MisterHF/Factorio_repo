@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -14,13 +15,15 @@ public class SaveLoadJson : MonoBehaviour
     //public float _playerMiningSpeed;
     //public int _playerMiningRange;
 
+    public Dictionary<string, string> items;
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             _gameData = new GameData();
-            _saveFilePath = Application.persistentDataPath + "/PlayerData.json";
+            _saveFilePath = Application.dataPath + "/PlayerData.json";
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -40,6 +43,7 @@ public class SaveLoadJson : MonoBehaviour
 
     public void SaveToJson()
     {
+        SaveInformations();
 
         string savePlayerData = JsonUtility.ToJson(_gameData);
         File.WriteAllText(_saveFilePath, savePlayerData);
@@ -54,6 +58,7 @@ public class SaveLoadJson : MonoBehaviour
         {
             string loadPlayerData = File.ReadAllText(_saveFilePath);
             _gameData = JsonUtility.FromJson<GameData>(loadPlayerData);
+            LoadInformationsInventory();
         }
     }
 
@@ -62,20 +67,48 @@ public class SaveLoadJson : MonoBehaviour
 
     }
 
-    public void SaveInventory()
+    public void SaveInventory(Dictionary<string, string> _items)
     {
-
+        items = _items;
+        
     }
 
+    private void LoadInformationsInventory()
+    {
+        /*string[] IDInventoryItem = _gameData.IDITEM.Split('/');
+        string[] CountInventoryItem = _gameData.COUNT.Split('/');
 
-    //public void RegisterInformations(bool alteratePlayerStats, float speed, int mining_range, int mining_speed)
-    //{
-    //    if (alteratePlayerStats)
-    //    {
-    //        _playerSpeed = speed;
-    //        _playerMiningSpeed = mining_speed;
-    //        _playerMiningRange = mining_range;
-    //    }
+        items = new Dictionary<string, string>();
+        for (int i = 0; i < IDInventoryItem.Length; i++)
+        {
+            items.Add(IDInventoryItem[i], CountInventoryItem[i]);
+        }*/
+    }
+    /// <summary>
+    /// Met les valeurs des variables de SaveAndLoad dans => GameData
+    /// </summary>
+    private void SaveInformations()
+    {
+        //Inventory dictionary
+        if (items != null) 
+        {
+            _gameData.COUNT = "";
+            _gameData.IDITEM = "";
 
-    //}
+            foreach (string IDCount in items.Keys)
+            {
+                _gameData.IDITEM += IDCount + "/";
+                _gameData.COUNT += items[IDCount] + "/";
+            }
+        }
+    }
+
+    public void DeleteSaveFile()
+    {
+        if (File.Exists(_saveFilePath))
+        {
+            File.Delete(_saveFilePath);
+            Debug.Log("Save delete !");
+        }
+    }
 }
