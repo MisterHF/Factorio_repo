@@ -1,12 +1,7 @@
 using System;
-using System.Net.NetworkInformation;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
-using Unity.Properties;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 using Image = UnityEngine.UI.Image;
 
 [Serializable]
@@ -16,21 +11,33 @@ public class DefaultSlot : MonoBehaviour, IDropHandler
     public int Count;
     [SerializeField] private TextMeshProUGUI TextCountItem;
     [SerializeField] private Image Img;
+
+    public Image Img1 { get { return Img; } set { Img = value; } }
+
     [SerializeField] private bool CanDropped = true;
-    [SerializeField] private bool AcceptAll = true;
+    public bool AcceptAll = true;
+    [SerializeField] private bool IsHighlight = false;
+
+    public bool IsHighlighted { get { return IsHighlight; } set { IsHighlight = value; } }
     [HideInInspector] public ItemData ItemAccepted;
+    private Color color = Color.white;
 
     private void Start()
     {
         TextCountItem.text = Count.ToString();
+        color!.a = 0.25f;
     }
 
     private void Update()
     {
         TextCountItem.text = Count.ToString();
-        if (Count <= 0)
+        if (Count <= 0 && !IsHighlight)
         {
             ChangeColorAndSprite();
+        }
+        else if (IsHighlight && Data == null) 
+        {
+            Img1.color = color;
         }
     }
 
@@ -71,7 +78,7 @@ public class DefaultSlot : MonoBehaviour, IDropHandler
                 ChangeColorAndSprite();
                 TextCountItem.text = Count.ToString();
             }
-            
+
         }
     }
 

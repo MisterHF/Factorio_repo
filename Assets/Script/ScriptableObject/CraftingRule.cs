@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,4 +6,5 @@ public class CraftingRule : ScriptableObject
 {
     public ItemData result;
     public List <ItemData> requires = new();
+    public List <int> countPerRaquires = new();
 }

@@ -104,4 +104,13 @@ public class Inventory : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    public bool ContentItem(ItemData data, int count)
+    {
+        foreach (DefaultSlot item in items) 
+        {
+            if (item.Data == data && item.Count >= count) return true;
+        }
+        return false;
+    }
 }
