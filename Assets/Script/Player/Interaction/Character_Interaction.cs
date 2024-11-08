@@ -21,13 +21,9 @@ public class Character_Interaction : MonoBehaviour
             Vector3.Distance(_mouseCollision.gameObject.transform.position, transform.position) <= range &&
             _mouseCollision.CompareTag("Build"))
         {
-            if (_mouseCollision.gameObject.TryGetComponent<BuildUi>(out BuildUi _b) && _b.PanelUi1.activeSelf == false)
+            if (_mouseCollision.gameObject.TryGetComponent<BuildUi>(out BuildUi _b))
             {
                 _b.OpenUI();
-            }
-            else if(_b.PanelUi1 == true)
-            {
-                _b.PanelUi1.SetActive(false);
             }
         }
     }

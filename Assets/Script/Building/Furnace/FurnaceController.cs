@@ -13,31 +13,26 @@ public class FurnaceController : MonoBehaviour
     [SerializeField] private float FurnaceSpeed;
     [SerializeField] private float EndTimer;
 
+
     [SerializeField] private float timer = 0;
 
     //Getter
     public float EndTimer1 => EndTimer;
-    public float Timer1 => timer;
 
     //Script
     [SerializeField] private FurnaceCraft SelectedCraft;
     private ItemData Result;
+    private BuildUi buildUi;
 
     //Unity Component
+    [SerializeField] private Slider TimerSlider;
     [SerializeField] private TMP_Dropdown Dropdown;
     [SerializeField] private DefaultSlot IngredientSlot;
     [SerializeField] private DefaultSlot ResultSlot;
 
-    private BuildUi buildUi;
-    
-    public void SetupFurnace()
+    private void Start()
     {
-        buildUi = gameObject.GetComponent<BuildUi>();
-        Dropdown = buildUi.PanelUi1.GetComponent<FurnacePanelInfo>().DropDown1;
-        IngredientSlot = buildUi.PanelUi1.GetComponent<FurnacePanelInfo>().EntrySlot1;
-        ResultSlot = buildUi.PanelUi1.GetComponent<FurnacePanelInfo>().ResultSlot1;
-        
-        
+        TimerSlider.maxValue = EndTimer1;
     }
 
     private void Update()
@@ -64,7 +59,7 @@ public class FurnaceController : MonoBehaviour
             if (timer <= EndTimer)
             {
                 timer += FurnaceSpeed * Time.deltaTime;
-                GetComponent<BuildUi>().UpdateValueSlider(timer);
+                TimerSlider.value = timer;
             }
             else
             {
@@ -75,8 +70,8 @@ public class FurnaceController : MonoBehaviour
                 ResultSlot.transform.GetChild(1).GetComponent<Image>().sprite = Result.sprite;
                 ResultSlot.transform.GetChild(1).GetComponent<Image>().color = Color.white;
                 Debug.Log("Crafted");
-                GetComponent<BuildUi>().UpdateValueSlider(0);
                 timer = 0;
+                TimerSlider.value = timer;
                 if (IngredientSlot.Count <= 0)
                 {
                     IngredientSlot.Data = null;
@@ -85,11 +80,4 @@ public class FurnaceController : MonoBehaviour
             }
         }
     }
-}
-
-[Serializable]
-public struct FurnaceRule
-{
-    public ScriptableObject ingredient;
-    public ScriptableObject result;
 }
