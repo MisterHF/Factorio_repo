@@ -10,9 +10,9 @@ public class GameData
 
 
     // Inventory Player
-    // Objet 
-    // Son slot
-    // Sa quantité
+    public int COUNT;
+    public int IDITEM;
+    
 
 
     // MinerData

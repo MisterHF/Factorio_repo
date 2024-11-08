@@ -10,9 +10,9 @@ public class SaveLoadJson : MonoBehaviour
 
     /// PlayerData
 
-    public float _playerSpeed;
-    public float _playerMiningSpeed;
-    public int _playerMiningRange;
+    //public float _playerSpeed;
+    //public float _playerMiningSpeed;
+    //public int _playerMiningRange;
 
     private void Awake()
     {
@@ -56,6 +56,17 @@ public class SaveLoadJson : MonoBehaviour
             _gameData = JsonUtility.FromJson<GameData>(loadPlayerData);
         }
     }
+
+    public void SaveBuilding()
+    {
+
+    }
+
+    public void SaveInventory()
+    {
+
+    }
+
 
     //public void RegisterInformations(bool alteratePlayerStats, float speed, int mining_range, int mining_speed)
     //{

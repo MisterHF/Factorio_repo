@@ -8,6 +8,7 @@ public class Character_Mouvement : MonoBehaviour
     [SerializeField] private Collider2D coll;
     [SerializeField] private GameObject inventory;
 
+  
     public void RightLeft(InputAction.CallbackContext context)
     {
         Vector2 move = context.ReadValue<Vector2>();
