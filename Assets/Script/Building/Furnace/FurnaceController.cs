@@ -28,20 +28,27 @@ public class FurnaceController : MonoBehaviour
     [SerializeField] private DefaultSlot IngredientSlot;
     [SerializeField] private DefaultSlot ResultSlot;
 
-    private void Start()
+    private BuildUi buildUi;
+    
+    public void SetupFurnace()
     {
-        Dropdown.onValueChanged.AddListener(delegate { GetCraft(); });
-        GetCraft(); // Initialize selectedCraft with the current dropdown value
+        buildUi = gameObject.GetComponent<BuildUi>();
+        Dropdown = buildUi.PanelUi1.GetComponent<FurnacePanelInfo>().DropDown1;
+        IngredientSlot = buildUi.PanelUi1.GetComponent<FurnacePanelInfo>().EntrySlot1;
+        ResultSlot = buildUi.PanelUi1.GetComponent<FurnacePanelInfo>().ResultSlot1;
+        
+        
     }
 
     private void Update()
     {
         FurnaceHeating();
+        GetCraft();
     }
 
-    public void GetCraft()
+    private void GetCraft()
     {
-        SelectedCraft = Dropdown.gameObject.GetComponent<GetValueFromDropDown>().ChangeCraftIntoFurnace();
+        SelectedCraft = Dropdown.gameObject.GetComponent<GetValueFromDropDown>().FurnaceCraft;
         if (SelectedCraft != null)
         {
             IngredientSlot.ItemAccepted = SelectedCraft.Item1;
@@ -57,7 +64,7 @@ public class FurnaceController : MonoBehaviour
             if (timer <= EndTimer)
             {
                 timer += FurnaceSpeed * Time.deltaTime;
-                GetComponent<Build_Ui>().UpdateValueSlider(timer);
+                GetComponent<BuildUi>().UpdateValueSlider(timer);
             }
             else
             {
@@ -68,7 +75,7 @@ public class FurnaceController : MonoBehaviour
                 ResultSlot.transform.GetChild(1).GetComponent<Image>().sprite = Result.sprite;
                 ResultSlot.transform.GetChild(1).GetComponent<Image>().color = Color.white;
                 Debug.Log("Crafted");
-                GetComponent<Build_Ui>().UpdateValueSlider(0);
+                GetComponent<BuildUi>().UpdateValueSlider(0);
                 timer = 0;
                 if (IngredientSlot.Count <= 0)
                 {

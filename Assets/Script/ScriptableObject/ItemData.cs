@@ -7,4 +7,11 @@ public class ItemData : ScriptableObject
     public string description;
     public string nameItem;
     public Sprite sprite;
+    public ObjectType Type;
+}
+
+public enum ObjectType
+{
+    Building,
+    Item
 }

@@ -5954,6 +5954,10 @@ PrefabInstance:
       propertyPath: textCountItem
       value: 
       objectReference: {fileID: 1564579688}
+    - target: {fileID: 3954608026036181997, guid: 706cfd78421ddfd49a1acf992d0a5108, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.8999939
+      objectReference: {fileID: 0}
     - target: {fileID: 5968109802589635639, guid: 706cfd78421ddfd49a1acf992d0a5108, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -16,5 +16,6 @@ MonoBehaviour:
   description: iron-rich ore (basic resource)
   nameItem: Iron-Ore
   sprite: {fileID: -668163136463115518, guid: cdad171012a078f428d81dda22ac93cf, type: 3}
+  Type: 1
   durability: 5
   type: 0
