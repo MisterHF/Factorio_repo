@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class GetValueFromDropDown : MonoBehaviour
 {
@@ -16,11 +18,19 @@ public class GetValueFromDropDown : MonoBehaviour
 
     public FurnaceCraft FurnaceCraft => furnaceCraft;
 
+    private int dropDownIndex;
+
+    private void Start()
+    {
+        DropDown.onValueChanged.AddListener(ActionToCall);
+    }
+
+
     public void GetDroopDownValue()
     {
-        int _dropDownIndex = DropDown.value;
-        string _dropDownText = DropDown.options[_dropDownIndex].text;
-        Debug.Log(_dropDownText);
+        dropDownIndex = DropDown.value;
+        string dropDownText = DropDown.options[dropDownIndex].text;
+        Debug.Log(dropDownText);
     }
 
     [ContextMenu("Add New Craft")]
@@ -31,7 +41,7 @@ public class GetValueFromDropDown : MonoBehaviour
 
         foreach (var craft in FurnaceCrafts)
         {
-            DropDownOption.Add(new TMP_Dropdown.OptionData(craft.Name, craft.Item2Sprite, Color.white));
+            DropDownOption.Add(new TMP_Dropdown.OptionData(craft.Name, craft?.Item2Sprite, Color.white));
         }
 
         DropDown.AddOptions(DropDownOption);
@@ -51,22 +61,11 @@ public class GetValueFromDropDown : MonoBehaviour
         DropDown.RefreshShownValue();
     }
 
-    [ContextMenu("AddListener To Craft")]
-    private void ActionCraft()
-    {
-        DropDown.onValueChanged.RemoveListener(ActionToCall);
-        DropDown.onValueChanged.AddListener(ActionToCall);
-    }
-
     private void ActionToCall(int arg0)
     {
-        for (int i = 0; i < FurnaceCrafts.Count; i++)
-        {
-            if (FurnaceCrafts[i].name == FurnaceCrafts[arg0].name)
-            {
-                furnaceCraft = FurnaceCrafts[i];
-            }
-        }
+        dropDownIndex = DropDown.value;
+        furnaceCraft = FurnaceCrafts[dropDownIndex];
+        Debug.Log(furnaceCraft);
     }
 
     private void OnDestroy()

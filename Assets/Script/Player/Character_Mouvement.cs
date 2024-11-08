@@ -19,8 +19,8 @@ public class Character_Mouvement : MonoBehaviour
         Vector2 move = context.ReadValue<Vector2>();
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, move.y * speed);
     }
-    
-    
+
+
 
     public void ZoomInZoomOut(InputAction.CallbackContext context)
     {

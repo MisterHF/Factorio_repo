@@ -16,5 +16,6 @@ MonoBehaviour:
   description: Copper-rich ore (basic resource)
   nameItem: Copper-Ingot
   sprite: {fileID: 7673461933543648006, guid: db7a8bad45fd3c049b0f81955edfbd84, type: 3}
+  Type: 1
   durability: 0
   type: 0
