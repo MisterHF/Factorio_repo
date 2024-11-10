@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class FurnaceController : Controller
 {
     //Float and Int
-    [SerializeField] private float HeatResistance;
+    [Header("Float and Int")] [SerializeField]
+    private float HeatResistance;
+
     [SerializeField] private float FurnaceSpeed;
     [SerializeField] private float EndTimer;
 
@@ -17,12 +19,14 @@ public class FurnaceController : Controller
     public float EndTimer1 => EndTimer;
 
     //Script
-    [SerializeField] private FurnaceCraft SelectedCraft;
+    [Header("Script")] [SerializeField] private FurnaceCraft SelectedCraft;
     private ItemData Result;
     private BuildUi buildUi;
 
     //Unity Component
-    [SerializeField] private Slider TimerSlider;
+    [Header("Unity Component")] [SerializeField]
+    private Slider TimerSlider;
+
     [SerializeField] private TMP_Dropdown Dropdown;
     [SerializeField] private DefaultSlot IngredientSlot;
     [SerializeField] private DefaultSlot ResultSlot;
@@ -38,14 +42,35 @@ public class FurnaceController : Controller
         GetCraft();
     }
 
-    public override ItemData GetItem()
+    public override ItemData GetItemData()
     {
-        return base.GetItem();
+        if (ResultSlot.Count <= 0)
+        {
+            ResultSlot.Data = null;
+        }
+        else
+        {
+            ResultSlot.Count--;
+        }
+
+        return ResultSlot.Data;
     }
 
-    public override void SetItem(ItemData _data)
+    public override int GetItemCount()
     {
-        base.SetItem(_data);
+        int count = ResultSlot.Count;
+        ResultSlot.Count = 0;
+        return count;
+    }
+
+    public override void SetItemData(ItemData _data)
+    {
+        IngredientSlot.Data = _data;
+    }
+
+    public override void SetItemCount(int _count)
+    {
+        IngredientSlot.Count += _count;
     }
 
     private void GetCraft()
@@ -57,34 +82,50 @@ public class FurnaceController : Controller
         }
     }
 
-    private void FurnaceHeating()
-    {
-        if (SelectedCraft == null || IngredientSlot.Count == 0) return;
+   private void FurnaceHeating()
+{
+    if (SelectedCraft == null || IngredientSlot.Count == 0) return;
 
-        if (IngredientSlot.Data == SelectedCraft.Item1)
+    if (VolcanoController.Instance.CurrentVolcanoHeat1 < SelectedCraft.RequiresHeat) return;
+
+    if (VolcanoController.Instance.CurrentVolcanoHeat1 > HeatResistance)
+    {
+        float failChance = UnityEngine.Random.Range(0f, 1f);
+        if (failChance < 0.5f)
         {
-            if (timer <= EndTimer)
+            Debug.Log("Crafting failed due to high temperature.");
+            return;
+        }
+    }
+
+    if (IngredientSlot.Data == SelectedCraft.Item1)
+    {
+        if (timer <= EndTimer)
+        {
+            float adjustedFurnaceSpeed = FurnaceSpeed * (1 + VolcanoController.Instance.CurrentVolcanoHeat1 / 100f);
+            timer += adjustedFurnaceSpeed * Time.deltaTime;
+            TimerSlider.value = timer;
+        }
+        else
+        {
+            Result = SelectedCraft.Item2;
+            ResultSlot.Data = Result;
+            ResultSlot.Count += 1;
+            IngredientSlot.Count -= 1;
+            if (Result != null)
             {
-                timer += FurnaceSpeed * Time.deltaTime;
-                TimerSlider.value = timer;
-            }
-            else
-            {
-                Result = SelectedCraft.Item2;
-                ResultSlot.Data = Result;
-                ResultSlot.Count += 1;
-                IngredientSlot.Count -= 1;
                 ResultSlot.transform.GetChild(1).GetComponent<Image>().sprite = Result.sprite;
                 ResultSlot.transform.GetChild(1).GetComponent<Image>().color = Color.white;
-                Debug.Log("Crafted");
-                timer = 0;
-                TimerSlider.value = timer;
-                if (IngredientSlot.Count <= 0)
-                {
-                    IngredientSlot.Data = null;
-                    // IngredientSlot.Clear();
-                }
+            }
+
+            Debug.Log("Crafted");
+            timer = 0;
+            TimerSlider.value = timer;
+            if (IngredientSlot.Count <= 0)
+            {
+                IngredientSlot.Data = null;
             }
         }
     }
+}
 }

@@ -54,14 +54,25 @@ public class Character_Build : MonoBehaviour
 
         if (!previewObject.activeSelf) previewObject.SetActive(true);
 
-        Vector3 mousePosition = GetMousePositionInWorld2D();
+        Vector3 mousePosition = GetMouseWorldPosition();
         previewObject.transform.position = mousePosition;
 
         canPlace = CheckPlacementValidity(mousePosition);
         ChangePreviewColor(canPlace);
     }
 
-    private Vector3 GetMousePositionInWorld2D()
+    private Vector3 GetMouseWorldPosition()
+    {
+        Vector3 mousePosition = Mouse.current.position.ReadValue();
+        mousePosition.z = mainCamera.nearClipPlane;
+        Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+        worldPosition.x = Mathf.Round(worldPosition.x);
+        worldPosition.y = Mathf.Round(worldPosition.y);
+        worldPosition.z = 0;
+        return worldPosition;
+    }
+    
+    Vector3 GetMousePositionInWorld2D()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.x = Mathf.Round(mousePosition.x);
@@ -69,6 +80,7 @@ public class Character_Build : MonoBehaviour
         mousePosition.z = 0;
         return mousePosition;
     }
+
 
     private bool CheckPlacementValidity(Vector3 position)
     {
@@ -85,9 +97,11 @@ public class Character_Build : MonoBehaviour
     private void PlaceObject()
     {
         Inventory.RemoveItem(buildingPrefab, 1);
-        previewObject.transform.position = GetMousePositionInWorld2D();
-        buildingPrefab = null;
+        Instantiate(buildingPrefab.prefab, GetMousePositionInWorld2D(), Quaternion.identity);
+        VolcanoController.Instance.IncreaseVolcanoHeat(buildingPrefab.Rarity);
+        Destroy(previewObject);
         previewObject = null;
+        buildingPrefab = null;
     }
 
     private void PreparePreview()
@@ -96,6 +110,7 @@ public class Character_Build : MonoBehaviour
 
         previewObject = Instantiate(buildingPrefab.prefab);
         previewObject.SetActive(false);
+        previewObject.GetComponent<BoxCollider2D>().enabled = false;
         SpriteRenderer renderer = previewObject.GetComponent<SpriteRenderer>();
         renderer.color = InvalidPlacementColor;
     }

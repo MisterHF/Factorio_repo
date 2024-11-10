@@ -19,3 +19,4 @@ MonoBehaviour:
   Type: 0
   heatResistance: 0
   prefab: {fileID: 5922512252468952377, guid: 77847da726bb34e43a49338e9eb48269, type: 3}
+  Rarity: 10

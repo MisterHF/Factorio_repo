@@ -1,15 +1,23 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Character_Mining : MonoBehaviour
 {
     [SerializeField] private float miningSpeed;
     [SerializeField] private int range;
     [SerializeField] private Inventory inventory;
+    [SerializeField] private Slider Slider;
     private bool isMining;
     private Coroutine mine;
+
+    private void Start()
+    {
+        Slider.gameObject.SetActive(false);
+    }
 
     public void OnMiningPerformed(InputAction.CallbackContext context)
     {
@@ -24,6 +32,8 @@ public class Character_Mining : MonoBehaviour
         if (context.canceled)
         {
             StopCoroutine(mine);
+            Slider.value = 0;
+            Slider.gameObject.SetActive(false);
         }
     }
 
@@ -36,9 +46,20 @@ public class Character_Mining : MonoBehaviour
             if (_mouseCollision.TryGetComponent<Pickeable>(out Pickeable _p) &&
                 _mouseCollision.transform.CompareTag("Minable"))
             {
+                Slider.gameObject.SetActive(true);
                 float _delay = _p.delay;
                 _delay = _delay * miningSpeed;
-                yield return new WaitForSeconds(_delay);
+                Slider.maxValue = _delay;
+                Slider.value = 0;
+                float elapsedTime = 0;
+
+                while (elapsedTime < _delay)
+                {
+                    elapsedTime += Time.deltaTime;
+                    Slider.value = elapsedTime;
+                    yield return null;
+                }
+
                 inventory.AddItem(_p.ScriptableObject, 1);
                 mine = StartCoroutine(Mine());
             }
@@ -47,7 +68,17 @@ public class Character_Mining : MonoBehaviour
             {
                 float _delay = _t.delay;
                 _delay = _delay * miningSpeed;
-                yield return new WaitForSeconds(_delay);
+                Slider.maxValue = _delay;
+                Slider.value = 0;
+                float elapsedTime = 0;
+
+                while (elapsedTime < _delay)
+                {
+                    elapsedTime += Time.deltaTime;
+                    Slider.value = elapsedTime;
+                    yield return null;
+                }
+
                 inventory.AddItem(_t.ScriptableObject, 1);
                 Destroy(_t.gameObject);
                 mine = StartCoroutine(Mine());

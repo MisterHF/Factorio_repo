@@ -8,6 +8,9 @@ public class GetPanel : MonoBehaviour
     public static GetPanel Instance { get; private set; }
 
     private List<GameObject> panelList = new List<GameObject>();
+    [SerializeField] private GameObject InfoPanel;
+
+    public GameObject InfoPanel1 => InfoPanel;
 
     public List<GameObject> PanelList => panelList;
 

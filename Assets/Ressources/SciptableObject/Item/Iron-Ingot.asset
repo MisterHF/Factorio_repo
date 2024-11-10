@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 3
   description: Iron-rich Ingot (basic resource)
-  nameItem: Iron-Ingot
+  nameItem: Iron Ingot
   sprite: {fileID: -6504919073095336983, guid: 30f1fbe98cbbd7b41ba9144350b0b562, type: 3}
   Type: 1
   durability: 0

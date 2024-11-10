@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 2
   description: Copper-rich ore (basic resource)
-  nameItem: Copper-Ore
+  nameItem: Copper Ore
   sprite: {fileID: 21300000, guid: aeb74e77a3d751d47b13fabfd1d8a685, type: 3}
   Type: 1
   durability: 0

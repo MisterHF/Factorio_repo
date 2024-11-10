@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Minable
   - Build
+  - DepositeWaaypoint
+  - RetrieveWaypoint
+  - Waypoint
   layers:
   - Default
   - TransparentFX

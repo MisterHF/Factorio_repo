@@ -1,24 +1,22 @@
 using System;
 using System.Collections;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class DrillerBehaviour : Controller
 {
     [SerializeField] private float miningSpeed;
+    [SerializeField] private LayerMask LayerMinable;
     [SerializeField] private int range;
+    [SerializeField] private BuildUi Ui;
     private DefaultSlot inventoryMiner;
     private Coroutine mine;
     private bool isStarted = false;
-    private BuildUi ui;
-
+    private Collider2D[] results = new Collider2D[10];
+    
     private void Start()
     {
-        ui = GetComponent<BuildUi>();
-
-        inventoryMiner = ui.OpenPrefab.GetComponent<GetSlot>().Slot;
+        inventoryMiner = Ui.OpenPrefab.GetComponent<GetSlot>().Slot;
         mine = StartCoroutine(Mine());
     }
 
@@ -30,6 +28,26 @@ public class DrillerBehaviour : Controller
         }
     }
 
+    public override ItemData GetItemData()
+    {
+        if (inventoryMiner.Count <= 0)
+        {
+            return null;
+        }
+        else
+        {
+            inventoryMiner.Count--;
+            return inventoryMiner.Data;
+        }
+    }
+
+    public override int GetItemCount()
+    {
+        int count = inventoryMiner.Count;
+        inventoryMiner.Count = 0;
+        return count;
+    }
+
     private void OnDestroy()
     {
         StopCoroutine(Mine());
@@ -39,19 +57,20 @@ public class DrillerBehaviour : Controller
     private IEnumerator Mine()
     {
         isStarted = true;
-        Collider2D[] collision = Physics2D.OverlapCircleAll(transform.position, 2).Where(x => x.gameObject != transform.gameObject).ToArray();
+        Collider2D collision = Physics2D.OverlapCircle(transform.position, 2, LayerMinable);
         if (collision != null &&
-            // Vector3.Distance(collision.gameObject.transform.position, transform.position) <= range &&
-            collision[0].gameObject.CompareTag("Minable"))
+            Vector3.Distance(collision.gameObject.transform.position, transform.position) <= range)
         {
-            Debug.Log("This is : " + collision[0].gameObject.name + ", " + "He has the tag : " + collision[0].gameObject.tag);
-            if (collision[0].TryGetComponent<Pickeable>(out Pickeable _p))
+            Debug.Log("This is : " + collision.gameObject.name + ", " + "He has the tag : " + collision.gameObject.tag);
+            if (collision.TryGetComponent<Pickeable>(out Pickeable _p))
             {
                 float _delay = _p.delay;
                 _delay = _delay * miningSpeed;
                 yield return new WaitForSeconds(_delay);
                 inventoryMiner.Count++;
                 inventoryMiner.Data = _p.ScriptableObject;
+                inventoryMiner.Img1.sprite = _p.ScriptableObject.sprite;
+                inventoryMiner.Img1.color = Color.white;
                 Debug.Log("Is Mined by Drill !");
                 mine = StartCoroutine(Mine());
             }
