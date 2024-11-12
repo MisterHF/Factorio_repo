@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 
 public class DrillerBehaviour : Controller
@@ -39,6 +37,11 @@ public class DrillerBehaviour : Controller
             inventoryMiner.Count--;
             return inventoryMiner.Data;
         }
+    }
+    
+    public override bool HasCraftSelected()
+    {
+        return false;
     }
 
     public override int GetItemCount()

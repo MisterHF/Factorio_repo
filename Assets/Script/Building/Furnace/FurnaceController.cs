@@ -7,7 +7,9 @@ public class FurnaceController : Controller
 {
     //Float and Int
     [Header("Float and Int")] [SerializeField]
-    private float HeatResistance;
+    private int HeatResistance;
+
+    private float adjustedFurnaceSpeed;
 
     [SerializeField] private float FurnaceSpeed;
     [SerializeField] private float EndTimer;
@@ -30,10 +32,15 @@ public class FurnaceController : Controller
     [SerializeField] private TMP_Dropdown Dropdown;
     [SerializeField] private DefaultSlot IngredientSlot;
     [SerializeField] private DefaultSlot ResultSlot;
+    [SerializeField] private TextMeshProUGUI HeatResistanceText;
+    [SerializeField] private TextMeshProUGUI HeatSpeedText;
 
     private void Start()
     {
         TimerSlider.maxValue = EndTimer1;
+        HeatResistanceText.text = HeatResistance.ToString();
+        adjustedFurnaceSpeed = FurnaceSpeed * (1 + VolcanoController.Instance.CurrentVolcanoHeat1 / 100f);
+        HeatSpeedText.text = Mathf.Round(adjustedFurnaceSpeed).ToString();
     }
 
     private void Update()
@@ -63,13 +70,9 @@ public class FurnaceController : Controller
         return count;
     }
 
-    public override void SetItemData(ItemData _data)
+    public override void SetItemCountForMultiSlot(int _count, ItemData _data)
     {
         IngredientSlot.Data = _data;
-    }
-
-    public override void SetItemCount(int _count)
-    {
         IngredientSlot.Count += _count;
     }
 
@@ -79,6 +82,18 @@ public class FurnaceController : Controller
         if (SelectedCraft != null)
         {
             IngredientSlot.ItemAccepted = SelectedCraft.Item1;
+        }
+    }
+    
+    public override bool HasCraftSelected()
+    {
+        if (SelectedCraft != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -102,7 +117,8 @@ public class FurnaceController : Controller
     {
         if (timer <= EndTimer)
         {
-            float adjustedFurnaceSpeed = FurnaceSpeed * (1 + VolcanoController.Instance.CurrentVolcanoHeat1 / 100f);
+            adjustedFurnaceSpeed = FurnaceSpeed * (1 + VolcanoController.Instance.CurrentVolcanoHeat1 / 100f);
+            HeatSpeedText.text = Mathf.Round(adjustedFurnaceSpeed).ToString();
             timer += adjustedFurnaceSpeed * Time.deltaTime;
             TimerSlider.value = timer;
         }

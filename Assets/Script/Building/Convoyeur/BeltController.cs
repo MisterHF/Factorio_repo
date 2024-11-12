@@ -14,6 +14,8 @@ public class BeltController : MonoBehaviour
     private Vector3 position0;
     private Collider2D[] results = new Collider2D[10];
 
+    public static BeltController SelectedBelt { get; set; }
+
     private void Start()
     {
         position0 = transform.position;
@@ -40,15 +42,15 @@ public class BeltController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && SelectedBelt == this)
         {
             Vector3 newWaypointPosition = GetMousePositionInWorld2D();
             if (newWaypointPosition != Vector3.zero)
             {
                 GameObject newWaypoint = Instantiate(WaypointPrefab, newWaypointPosition, Quaternion.identity);
-                newWaypoint.GetComponent<PassRender>().BeltController = this;
+                PassRender passRender = newWaypoint.GetComponent<PassRender>();
                 waypons.Add(newWaypoint.transform.position);
-                InsertWaypointInOrder(newWaypoint.transform.position);
+                InsertWaypointInOrder(newWaypoint.transform.position, passRender);
             }
         }
 
@@ -58,14 +60,14 @@ public class BeltController : MonoBehaviour
         }
     }
 
-    private void InsertWaypointInOrder(Vector3 newWaypointPosition)
+    private void InsertWaypointInOrder(Vector3 _newWaypointPosition, PassRender _pass)
     {
         float closestDistance = float.MaxValue;
         int closestIndex = 0;
 
         for (int i = 0; i < waypons.Count; i++)
         {
-            float distance = Vector3.Distance(newWaypointPosition, waypons[i]);
+            float distance = Vector3.Distance(_newWaypointPosition, waypons[i]);
             if (distance < closestDistance)
             {
                 closestDistance = distance;
@@ -73,7 +75,8 @@ public class BeltController : MonoBehaviour
             }
         }
 
-        waypons.Insert(closestIndex + 1, newWaypointPosition);
+        _pass.SetupLineRenderer(waypons[closestIndex - 1], _newWaypointPosition);
+        waypons.Insert(closestIndex + 1, _newWaypointPosition);
     }
 
     Vector3 GetMousePositionInWorld2D()
@@ -86,65 +89,70 @@ public class BeltController : MonoBehaviour
     }
 
     private void Patrol()
-{
-    transform.position = Vector3.MoveTowards(transform.position, waypons[index], BeltSpeed * Time.deltaTime);
-    if (Vector3.Distance(transform.position, waypons[index]) <= 0.1)
     {
-        if (index == 0)
+        transform.position = Vector3.MoveTowards(transform.position, waypons[index], BeltSpeed * Time.deltaTime);
+        if (Vector3.Distance(transform.position, waypons[index]) <= 0.1)
         {
-            int count = Physics2D.OverlapCircleNonAlloc(transform.position, 2, results);
-            for (int i = 0; i < count; i++)
+            if (index == 0)
             {
-                if (results[i].gameObject != gameObject)
+                int count = Physics2D.OverlapCircleNonAlloc(transform.position, 2, results);
+                for (int i = 0; i < count; i++)
                 {
-                    Controller controller = results[i].GetComponent<Controller>();
+                    if (results[i].gameObject != gameObject)
+                    {
+                        Controller controller = results[i].GetComponent<Controller>();
+                        if (controller != null)
+                        {
+                            Debug.Log(controller);
+                            if (TransportedItem == null)
+                            {
+                                TransportedItem = controller.GetItemData();
+                            }
+
+                            CountItem += controller.GetItemCount();
+                            Debug.Log(TransportedItem + " " + CountItem);
+                        }
+                    }
+                }
+            }
+            else if (index == waypons.Count - 1)
+            {
+                Collider2D[] count = Physics2D.OverlapCircleAll(transform.position, 2, Layer)
+                    .Where(collider => collider.gameObject != gameObject)
+                    .ToArray();
+                if (count.Length > 0)
+                {
+                    BuildUi uiTouch = count[0].GetComponent<BuildUi>();
+                    Controller controller = uiTouch.OpenPrefab.GetComponent<Controller>();
                     if (controller != null)
                     {
                         Debug.Log(controller);
-                        if (TransportedItem == null)
+                        if (TransportedItem != null)
                         {
-                            TransportedItem = controller.GetItemData();
+                            if (controller.CanAcceptItem)
+                            {
+                                if (controller.HasCraftSelected())
+                                {
+                                    controller.SetItemCountForMultiSlot(CountItem, TransportedItem);
+                                    CountItem = 0;
+                                }
+                            }
                         }
-
-                        CountItem += controller.GetItemCount();
-                        Debug.Log(TransportedItem + " " + CountItem);
                     }
                 }
             }
-        }
-        else if (index == waypons.Count - 1)
-        {
-            Collider2D[] count = Physics2D.OverlapCircleAll(transform.position, 2, Layer)
-                .Where(collider => collider.gameObject != gameObject)
-                .ToArray();
-            if (count.Length > 0)
+
+            if (index >= waypons.Count - 1)
             {
-                BuildUi controller = count[0].GetComponent<BuildUi>();
-                if (controller != null)
-                {
-                    Debug.Log(controller);
-                    if (TransportedItem != null)
-                    {
-                        controller.OpenPrefab.GetComponent<Controller>().SetItemData(TransportedItem);
-                        controller.OpenPrefab.GetComponent<Controller>().SetItemCount(CountItem);
-                        TransportedItem = null;
-                        CountItem = 0;
-                    }
-                }
+                index = 0;
+                waypons.Reverse();
             }
-        }
-
-        if (index >= waypons.Count - 1)
-        {
-            index = 0;
-            waypons.Reverse();
-        }
-        else
-        {
-            index++;
+            else
+            {
+                index++;
+            }
         }
     }
-}
 
     void OnDrawGizmos()
     {

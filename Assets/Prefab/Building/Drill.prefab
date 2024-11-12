@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d15ec5f2dbd6b3146b5f41b67f695aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanAcceptItem: 0
   miningSpeed: 0.5
   LayerMinable:
     serializedVersion: 2
@@ -211,7 +212,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scriptableObject: {fileID: 11400000, guid: 140da698b56c7184f91905dd3e8015bd, type: 2}
-  durability: 5
   delay: 5
 --- !u!114 &8139184335869412264
 MonoBehaviour:

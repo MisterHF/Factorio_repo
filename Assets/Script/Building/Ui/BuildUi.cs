@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[DefaultExecutionOrder(-10)]
 public class BuildUi : MonoBehaviour
 {
     [SerializeField] private GameObject PanelPrefab;

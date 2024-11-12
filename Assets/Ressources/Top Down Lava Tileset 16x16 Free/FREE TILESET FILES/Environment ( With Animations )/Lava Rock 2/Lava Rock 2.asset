@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Lava Rock 2
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: -346115256274231672, guid: 0038c7ae9351e4d4aaa1c2d46de1ee56, type: 3}
+  - {fileID: -7345495855461289497, guid: 244fc0ffe5b154641b419dd90e6a4c13, type: 3}
+  - {fileID: 2723040888812437037, guid: e95c0f5f444d9c64d8b31bc82c0378c9, type: 3}
+  - {fileID: 785297025326433384, guid: abd21031d5df4304da243d919782d740, type: 3}
+  - {fileID: -7423889564128458920, guid: 2ae3d89d4d7801f4094228d96c15cd30, type: 3}
+  - {fileID: 1008903435904833995, guid: 34cf1b209936f6e44a6e493b348b1a61, type: 3}
+  - {fileID: -6061215414997307886, guid: 5f3d4d7826ecd2e4886f6e25675e5535, type: 3}
+  m_MinSpeed: 3
+  m_MaxSpeed: 3
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380ea01958cc4914381f21f9718025b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BeltController: {fileID: 0}
+  lineRender: {fileID: 3355889099150975550}
 --- !u!120 &3355889099150975550
 LineRenderer:
   serializedVersion: 2
@@ -116,7 +116,7 @@ LineRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0.3962264, g: 0.19830734, b: 0, a: 1}
-      key1: {r: 0.3962264, g: 0.19830734, b: 0, a: 1}
+      key1: {r: 0.5294118, g: 0.2376661, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -139,7 +139,7 @@ LineRenderer:
       atime5: 0
       atime6: 0
       atime7: 0
-      m_Mode: 1
+      m_Mode: 2
       m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
@@ -198,7 +198,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4f9e45e29a3382649bf89557e2a37a4f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de91fcf09b3a58c40bd25a04beee4093, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

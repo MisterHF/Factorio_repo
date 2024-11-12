@@ -442,7 +442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5790124285704587511
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1265,8 +1265,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8509823083128015565}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.16000003}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1483,6 +1483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26c7f031201f594ca2266034ddb82ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanAcceptItem: 1
   craftPanel: {fileID: 0}
   content: {fileID: 7450999160726076821}
   buttonPrefab: {fileID: 8787301489081085178, guid: 72109a54c3dc8b64cbd7dd109b98d840, type: 3}

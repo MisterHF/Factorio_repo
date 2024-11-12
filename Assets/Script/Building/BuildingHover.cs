@@ -7,34 +7,43 @@ public class BuildingHover : MonoBehaviour
 
     private void Start()
     {
-        infoPanel = GetPanel.Instance.InfoPanel1;
+        infoPanel = SetInfoText.SInstance.gameObject;
         haloRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         haloRenderer.enabled = false;
-        infoPanel.GetComponent<SetInfoText>().SetTextName(string.Empty);
-        infoPanel.GetComponent<SetInfoText>().SetTextType(string.Empty);
+        SetInfoText.SInstance.SetTextName(string.Empty);
+        SetInfoText.SInstance.SetTextType(string.Empty);
     }
 
     private void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Collider2D hitCollider = Physics2D.OverlapPoint(mousePos);
+        Collider2D[] hitColliders = Physics2D.OverlapPointAll(mousePos);
 
-        if (hitCollider != null && hitCollider.gameObject == gameObject)
+        bool isHovering = false;
+
+        foreach (var hitCollider in hitColliders)
         {
-            haloRenderer.enabled = true;
-            infoPanel.SetActive(true);
-            var pickeable = hitCollider.gameObject.GetComponent<Pickeable>();
-            if (pickeable != null)
+            if (hitCollider.gameObject == gameObject)
             {
-                infoPanel.GetComponent<SetInfoText>().SetTextName(pickeable.ScriptableObject.nameItem);
-                infoPanel.GetComponent<SetInfoText>().SetTextType(gameObject.tag);
+                haloRenderer.enabled = true;
+                infoPanel.transform.GetChild(0).gameObject.SetActive(true);
+                Pickeable pickeable = hitCollider.gameObject.GetComponent<Pickeable>();
+                if (pickeable != null)
+                {
+                    SetInfoText.SInstance.SetTextName(pickeable.ScriptableObject.nameItem);
+                    SetInfoText.SInstance.SetTextType(gameObject.tag);
+                    BeltController.SelectedBelt = GetComponent<BeltController>();
+                }
+                isHovering = true;
             }
         }
-        else
+
+        if (!isHovering)
         {
             haloRenderer.enabled = false;
-            infoPanel.GetComponent<SetInfoText>().SetTextName(string.Empty);
-            infoPanel.GetComponent<SetInfoText>().SetTextType(string.Empty);
+            infoPanel.transform.GetChild(0).gameObject.SetActive(false);
+            SetInfoText.SInstance.SetTextName(string.Empty);
+            SetInfoText.SInstance.SetTextType(string.Empty);
         }
     }
 }

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Lava Border 58
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 584606514, guid: fc34a225feb6fad42bc7c8468b042ca9, type: 3}
+  - {fileID: -1513911227, guid: 51cee597961a2cd4bb90ebbe29302247, type: 3}
+  - {fileID: 1910412750, guid: 66c76441a3035374b90ddfde8e073149, type: 3}
+  - {fileID: -1256577280, guid: 5d567028a14c2f6429bcca158b28dd7d, type: 3}
+  - {fileID: -403155194, guid: a6a72041f4552dd45ae34f4a2e519f67, type: 3}
+  - {fileID: 547190535, guid: 1c02f60b851b7bb499345568594d9628, type: 3}
+  - {fileID: -1472058446, guid: 1bdaba774c5d6eb43a5ebfd002f2da40, type: 3}
+  m_MinSpeed: 3
+  m_MaxSpeed: 3
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0

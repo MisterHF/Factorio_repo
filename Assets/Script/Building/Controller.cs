@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    public bool CanAcceptItem;
+    
     public virtual ItemData GetItemData()
     {
         return null;
@@ -11,14 +13,14 @@ public class Controller : MonoBehaviour
     {
         return 0;
     }
-
-    public virtual void SetItemData(ItemData _data)
+    
+    public virtual void SetItemCountForMultiSlot(int _count, ItemData _data)
     {
         
     }
-    
-    public virtual void SetItemCount(int _count)
+
+    public virtual bool HasCraftSelected()
     {
-        
+        return false;
     }
 }
