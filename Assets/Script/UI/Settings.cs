@@ -16,30 +16,19 @@ public class Settings : MonoBehaviour
 
     public void ChangeMasterVolume()
     {
-        mainAudioMixer.SetFloat("MasterVolume", masterVol.value);
+        mainAudioMixer.SetFloat("MasterVolume", Mathf.Log10(masterVol.value)*20);
     }
     public void ChangeMusicVolume()
     {
-        mainAudioMixer.SetFloat("MusicVolume", musicVol.value);
+        mainAudioMixer.SetFloat("MusicVolume", Mathf.Log10(musicVol.value)* 20);
     }
     public void ChangeSFXVolume()
     {
-        mainAudioMixer.SetFloat("SFXVolume", sfxVol.value);
+        mainAudioMixer.SetFloat("SFXVolume", Mathf.Log10(sfxVol.value) * 20);
     }
 
     public void ClosePanel()
     {
         gameObject.SetActive(false);
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
