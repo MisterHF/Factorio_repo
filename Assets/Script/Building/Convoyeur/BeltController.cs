@@ -106,7 +106,10 @@ public class BeltController : MonoBehaviour
                             Debug.Log(controller);
                             if (TransportedItem == null)
                             {
-                                TransportedItem = controller.GetItemData();
+                                if (TransportedItem == controller.GetItemData())
+                                {
+                                    TransportedItem = controller.GetItemData();
+                                }
                             }
 
                             CountItem += controller.GetItemCount();
