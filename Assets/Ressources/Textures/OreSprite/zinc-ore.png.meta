@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: e77385ce9ee93a8439836fd3e2c00271
+guid: a3779e6856894b942a89d2b30fcdf435
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 575470582230332190
-    second: MockupMapMainMenu_0
+      213: 1015459159510651116
+    second: zinc-ore_0
+  - first:
+      213: 432772031372789711
+    second: zinc-ore_1
+  - first:
+      213: 3608169317158471090
+    second: zinc-ore_2
+  - first:
+      213: -7027875979037868074
+    second: zinc-ore_3
+  - first:
+      213: 1437499454002926104
+    second: zinc-ore_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MockupMapMainMenu_0
+      name: zinc-ore_0
       rect:
         serializedVersion: 2
-        x: 255
-        y: 255
-        width: 4635
-        height: 2818
+        x: 16
+        y: 99
+        width: 57
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +140,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e13b680127b7cf700800000000000000
-      internalID: 575470582230332190
+      spriteID: ce09c86b9b2a71e00800000000000000
+      internalID: 1015459159510651116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zinc-ore_1
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 84
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc703be9ed3810600800000000000000
+      internalID: 432772031372789711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zinc-ore_2
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 79
+        width: 77
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b5c1b680eac21230800000000000000
+      internalID: 3608169317158471090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zinc-ore_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 19
+        width: 77
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6df72f74808f77e90800000000000000
+      internalID: -7027875979037868074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zinc-ore_4
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 24
+        width: 52
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81299a0232603f310800000000000000
+      internalID: 1437499454002926104
       vertices: []
       indices: 
       edges: []
@@ -147,8 +247,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      MockupMapMainMenu_0: 575470582230332190
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

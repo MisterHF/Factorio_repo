@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e77385ce9ee93a8439836fd3e2c00271
+guid: 075007207313c1e4bb9be899f0c172d0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 575470582230332190
-    second: MockupMapMainMenu_0
+      213: 5924441881788294832
+    second: potion_empty_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MockupMapMainMenu_0
+      name: potion_empty_0
       rect:
         serializedVersion: 2
-        x: 255
-        y: 255
-        width: 4635
-        height: 2818
+        x: 34
+        y: 12
+        width: 272
+        height: 362
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e13b680127b7cf700800000000000000
-      internalID: 575470582230332190
+      spriteID: 0b62070a088d73250800000000000000
+      internalID: 5924441881788294832
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      MockupMapMainMenu_0: 575470582230332190
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

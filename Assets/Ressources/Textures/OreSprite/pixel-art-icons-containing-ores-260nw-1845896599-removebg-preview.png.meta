@@ -1,0 +1,1330 @@
+fileFormatVersion: 2
+guid: 2e1e7e20e3db85b438f381f135f7b495
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7481949900595535649
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_0
+  - first:
+      213: 8034677451070373263
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_1
+  - first:
+      213: -3550322353369200474
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_2
+  - first:
+      213: -5479138027608768467
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_3
+  - first:
+      213: -3715638850669918507
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_4
+  - first:
+      213: 6471030911172532093
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_5
+  - first:
+      213: 9102825369566918465
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_6
+  - first:
+      213: 2026920084988853558
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_7
+  - first:
+      213: 7595121403142858355
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_8
+  - first:
+      213: 695072381161953987
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_9
+  - first:
+      213: 6716725754179339536
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_10
+  - first:
+      213: -2111301951037207954
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_11
+  - first:
+      213: 1623569120218559021
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_12
+  - first:
+      213: 8139611515817465169
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_13
+  - first:
+      213: 3577173877825866183
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_14
+  - first:
+      213: 1788108864473777135
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_15
+  - first:
+      213: -5202362904381769117
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_16
+  - first:
+      213: 7249440227520087698
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_17
+  - first:
+      213: 7863936718714456408
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_18
+  - first:
+      213: 2632551286746902819
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_19
+  - first:
+      213: 5906886146385320564
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_20
+  - first:
+      213: -8963899784533557696
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_21
+  - first:
+      213: 2567035301006069087
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_22
+  - first:
+      213: -7084102829352841549
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_23
+  - first:
+      213: -2745699246363922598
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_24
+  - first:
+      213: -8950780486001440443
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_25
+  - first:
+      213: 3783564416655931793
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_26
+  - first:
+      213: -2138662389539027680
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_27
+  - first:
+      213: 7628354856750662568
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_28
+  - first:
+      213: -6682576633006429855
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_29
+  - first:
+      213: 6115491159754328896
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_30
+  - first:
+      213: -7871037103628484456
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_31
+  - first:
+      213: -4356049544045960504
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_32
+  - first:
+      213: -3305287662959579133
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_33
+  - first:
+      213: -6481148590014551908
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_34
+  - first:
+      213: -7214651263707841908
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_35
+  - first:
+      213: -3523367955762424692
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_36
+  - first:
+      213: -641005227821731729
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_37
+  - first:
+      213: -1397019306035846395
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_38
+  - first:
+      213: 5938353529871502252
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_39
+  - first:
+      213: 7879270710972000312
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_40
+  - first:
+      213: 989843079231886950
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_41
+  - first:
+      213: 4068901068991194307
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_42
+  - first:
+      213: 6827284036805271680
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_43
+  - first:
+      213: 8792560247182863974
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_44
+  - first:
+      213: -3986727335654936326
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_45
+  - first:
+      213: 856406665077498427
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_46
+  - first:
+      213: 1451798709181728558
+    second: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_47
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 988
+        width: 282
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd0ebbbd436ca2890800000000000000
+      internalID: -7481949900595535649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 988
+        width: 282
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8df3eb7298e08f60800000000000000
+      internalID: 8034677451070373263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 978
+        width: 282
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a8cc4941a8babec0800000000000000
+      internalID: -3550322353369200474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 988
+        width: 282
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d208b0d5ef036f3b0800000000000000
+      internalID: -5479138027608768467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 988
+        width: 282
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d6cd20d6266f6cc0800000000000000
+      internalID: -3715638850669918507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 1659
+        y: 988
+        width: 212
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d77d2072458bdc950800000000000000
+      internalID: 6471030911172532093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 718
+        width: 262
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 147337dd17bb35e70800000000000000
+      internalID: 9102825369566918465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 718
+        width: 282
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63d7dd50411112c10800000000000000
+      internalID: 2026920084988853558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 708
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 376eb4cecaa476960800000000000000
+      internalID: 7595121403142858355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 698
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cad754e5a465a900800000000000000
+      internalID: 695072381161953987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 698
+        width: 272
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 015c3979c7a963d50800000000000000
+      internalID: 6716725754179339536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 728
+        width: 42
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6a86dacf0623b2e0800000000000000
+      internalID: -2111301951037207954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 678
+        width: 222
+        height: 272
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d22bbe64383188610800000000000000
+      internalID: 1623569120218559021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_13
+      rect:
+        serializedVersion: 2
+        x: 1309
+        y: 698
+        width: 262
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1559af15c85b5f070800000000000000
+      internalID: 8139611515817465169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_14
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 668
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c90e9f60bca4a130800000000000000
+      internalID: 3577173877825866183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_15
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 698
+        width: 232
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe3cfa6d983a0d810800000000000000
+      internalID: 1788108864473777135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_16
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 668
+        width: 62
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36ab7a3708e7dc7b0800000000000000
+      internalID: -5202362904381769117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_17
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 668
+        width: 52
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29603cd4a7f2b9460800000000000000
+      internalID: 7249440227520087698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_18
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 678
+        width: 52
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 859402fd7c0522d60800000000000000
+      internalID: 7863936718714456408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_19
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 668
+        width: 62
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 321fb8b8273b88420800000000000000
+      internalID: 2632551286746902819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_20
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 658
+        width: 52
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47a19f377a979f150800000000000000
+      internalID: 5906886146385320564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_21
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 668
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04e3da483a4d99380800000000000000
+      internalID: -8963899784533557696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_22
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 678
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5dca5a6101ff9320800000000000000
+      internalID: 2567035301006069087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_23
+      rect:
+        serializedVersion: 2
+        x: 1629
+        y: 688
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3be8518820630bd90800000000000000
+      internalID: -7084102829352841549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_24
+      rect:
+        serializedVersion: 2
+        x: 1749
+        y: 668
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5fab60351155e9d0800000000000000
+      internalID: -2745699246363922598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_25
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 348
+        width: 282
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 549c26d329078c380800000000000000
+      internalID: -8950780486001440443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_26
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 348
+        width: 282
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 199b59f6acbe18430800000000000000
+      internalID: 3783564416655931793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_27
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 348
+        width: 282
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 025c90943e1f152e0800000000000000
+      internalID: -2138662389539027680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_28
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 338
+        width: 282
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a3cf31535c5dd960800000000000000
+      internalID: 7628354856750662568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_29
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 348
+        width: 282
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 169635545f7b243a0800000000000000
+      internalID: -6682576633006429855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_30
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 348
+        width: 282
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04bc23cfec69ed450800000000000000
+      internalID: 6115491159754328896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_31
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 58
+        width: 232
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8900e40f47574c290800000000000000
+      internalID: -7871037103628484456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_32
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 168
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c2632fd4043c83c0800000000000000
+      internalID: -4356049544045960504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_33
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 28
+        width: 242
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30030d8f1624122d0800000000000000
+      internalID: -3305287662959579133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_34
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 78
+        width: 262
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c98a8ab22b55e06a0800000000000000
+      internalID: -6481148590014551908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_35
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 18
+        width: 242
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8afe5886e860eb90800000000000000
+      internalID: -7214651263707841908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_36
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 218
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8459c7038b7a1fc0800000000000000
+      internalID: -3523367955762424692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_37
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 68
+        width: 292
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6074883421ba17f0800000000000000
+      internalID: -641005227821731729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_38
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 48
+        width: 292
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 503ee57c75acc9ce0800000000000000
+      internalID: -1397019306035846395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_39
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 68
+        width: 92
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cab8daa9215496250800000000000000
+      internalID: 5938353529871502252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_40
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 118
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83820a827fac85d60800000000000000
+      internalID: 7879270710972000312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_41
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 148
+        width: 52
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 666def04901acbd00800000000000000
+      internalID: 989843079231886950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_42
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 38
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c46d6bd6f3a77830800000000000000
+      internalID: 4068901068991194307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_43
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 38
+        width: 52
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0802972b8a26fbe50800000000000000
+      internalID: 6827284036805271680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_44
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 28
+        width: 52
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66e2e87b5f2750a70800000000000000
+      internalID: 8792560247182863974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_45
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 38
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af0b2fd5c9c4ca8c0800000000000000
+      internalID: -3986727335654936326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_46
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 38
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b32a83f035192eb00800000000000000
+      internalID: 856406665077498427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel-art-icons-containing-ores-260nw-1845896599-removebg-preview_47
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 38
+        width: 62
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e27c52aeb33d52410800000000000000
+      internalID: 1451798709181728558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

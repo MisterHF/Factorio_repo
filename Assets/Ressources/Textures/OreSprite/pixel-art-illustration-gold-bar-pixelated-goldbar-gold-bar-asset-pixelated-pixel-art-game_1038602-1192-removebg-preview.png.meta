@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e77385ce9ee93a8439836fd3e2c00271
+guid: b10ba62c394c0cd429cf2f0f9c8e9ff7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 575470582230332190
-    second: MockupMapMainMenu_0
+      213: 8021791581365416753
+    second: pixel-art-illustration-gold-bar-pixelated-goldbar-gold-bar-asset-pixelated-pixel-art-game_1038602-1192-removebg-preview_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MockupMapMainMenu_0
+      name: pixel-art-illustration-gold-bar-pixelated-goldbar-gold-bar-asset-pixelated-pixel-art-game_1038602-1192-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 255
-        y: 255
-        width: 4635
-        height: 2818
+        x: 74
+        y: 91
+        width: 202
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e13b680127b7cf700800000000000000
-      internalID: 575470582230332190
+      spriteID: 133318521f0235f60800000000000000
+      internalID: 8021791581365416753
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      MockupMapMainMenu_0: 575470582230332190
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eec5769f5617ed94baf517c4c4047bea, type: 3}
-  m_Name: Drill
+  m_Name: Steel furnace
   m_EditorClassIdentifier: 
-  ID: 26
-  description: Mine Ores.
-  nameItem: Miner
-  sprite: {fileID: 7482667652216324306, guid: e7c832fcbb7e37848865fdc13838e8b8, type: 3}
+  ID: 0
+  description: 
+  nameItem: 
+  sprite: {fileID: 0}
   Type: 0
   heatResistance: 0
-  prefab: {fileID: 1212696727665052526, guid: 703efe9ec37ca6b45856d7089ab2479c, type: 3}
-  Rarity: 10
+  prefab: {fileID: 0}
+  Rarity: 0
