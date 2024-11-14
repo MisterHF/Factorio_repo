@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: CR_Grinder
   m_EditorClassIdentifier: 
   result: {fileID: 11400000, guid: ee773b745d6cd5147bf77ce1b4021f80, type: 2}
-  requires: []
-  countPerRaquires: 
+  requires:
+  - {fileID: 11400000, guid: d186596fb9c9186419552fb863562c2e, type: 2}
+  - {fileID: 11400000, guid: 0ad28e65250c60f489045f2aa977c094, type: 2}
+  countPerRaquires: 0a0000000a000000

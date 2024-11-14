@@ -15,4 +15,5 @@ MonoBehaviour:
   result: {fileID: 11400000, guid: ebad0a50aca52cc49840906a1529839e, type: 2}
   requires:
   - {fileID: 11400000, guid: 66407d5cb60bc8a47ab501f309fc353c, type: 2}
-  countPerRaquires: 05000000
+  - {fileID: 11400000, guid: 566a173cc60ae7344aa2f4a27e00511e, type: 2}
+  countPerRaquires: 0500000005000000

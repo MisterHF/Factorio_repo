@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 20
   description: Brick
   nameItem: Brick
-  sprite: {fileID: 0}
+  sprite: {fileID: -1572391234087474867, guid: 544f03705aee61c4197fc38f2e624797, type: 3}
   Type: 1
   durability: 0
   type: 2

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe49fe1c758196d489ac40d3f3807555, type: 3}
   m_Name: CR_Gem-Crafter
   m_EditorClassIdentifier: 
-  result: {fileID: 0}
-  requires: []
-  countPerRaquires: 
+  result: {fileID: 11400000, guid: 85b931ae8f822e048bdce279d80d1b3a, type: 2}
+  requires:
+  - {fileID: 11400000, guid: d186596fb9c9186419552fb863562c2e, type: 2}
+  - {fileID: 11400000, guid: fe2eb8311eba6a04bbb2c3c58ac6e707, type: 2}
+  - {fileID: 11400000, guid: 881cf186f743be740a462f7260a43917, type: 2}
+  countPerRaquires: 050000000500000005000000
