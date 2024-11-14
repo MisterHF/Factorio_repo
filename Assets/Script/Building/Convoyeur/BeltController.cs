@@ -1,195 +1,246 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class BeltController : MonoBehaviour
 {
-    [SerializeField] private float BeltSpeed;
-    [SerializeField] private ItemData TransportedItem;
-    [SerializeField] private int CountItem;
-    [SerializeField] private LayerMask Layer;
-    [SerializeField] private GameObject WaypointPrefab;
-    private List<Vector3> waypons = new();
-    private int index = 0;
-    private Vector3 position0;
-    private Collider2D[] results = new Collider2D[10];
+    [SerializeField] private float beltSpeed;
+    [SerializeField] private GameObject waypointPrefab; // Un seul prefab pour tous les waypoints
+    [SerializeField] private LayerMask layerMask;
+
+    private List<PathNode> pathNodes = new();
+    private HashSet<Vector3> occupiedPositions = new(); 
+    private int currentNodeIndex = 0;
+    private bool pathValidated = false;
+    private bool isDrawingPath = false;
 
     public static BeltController SelectedBelt { get; set; }
 
-    private void Start()
+    public enum PathType
     {
-        position0 = transform.position;
-        waypons.Add(position0);
-        RetrieveDataFromNearbyMachine();
+        Fill,
+        Empty,
+        Follow
     }
 
-    private void RetrieveDataFromNearbyMachine()
+    private PathType selectedPathType = PathType.Follow;
+
+    private void Start()
     {
-        int count = Physics2D.OverlapCircleNonAlloc(transform.position, 2, results);
-        for (int i = 0; i < count; i++)
-        {
-            if (results[i].gameObject != gameObject)
-            {
-                Controller controller = results[i].GetComponent<Controller>();
-                if (controller != null)
-                {
-                    TransportedItem = controller.GetItemData();
-                    Debug.Log("Data retrieved from nearby machine: " + TransportedItem + " " + CountItem);
-                }
-            }
-        }
+        CreateInitialNode();
+    }
+
+    private void CreateInitialNode()
+    {
+        Vector3 startPosition = transform.position;
+        AddNode(startPosition, PathType.Follow);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && SelectedBelt == this)
+        // Changer le type de node avec les touches 1, 2, ou 3
+        if (Input.GetKeyDown(KeyCode.Alpha1)) selectedPathType = PathType.Fill;
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) selectedPathType = PathType.Empty;
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) selectedPathType = PathType.Follow;
+
+        // Commencer à dessiner le chemin
+        if (Input.GetMouseButtonDown(0) && !pathValidated && SelectedBelt == this)
         {
-            Vector3 newWaypointPosition = GetMousePositionInWorld2D();
-            if (newWaypointPosition != Vector3.zero)
+            isDrawingPath = true;
+        }
+
+        // Terminer le dessin du chemin
+        if (Input.GetMouseButtonUp(0) && !pathValidated)
+        {
+            isDrawingPath = false;
+        }
+
+        // Ajouter un waypoint lors du clic gauche
+        if (isDrawingPath && !pathValidated)
+        {
+            Vector3 newNodePosition = GetMousePositionRounded();
+            if (newNodePosition != Vector3.zero && CanAddNode(newNodePosition))
             {
-                GameObject newWaypoint = Instantiate(WaypointPrefab, newWaypointPosition, Quaternion.identity);
-                PassRender passRender = newWaypoint.GetComponent<PassRender>();
-                waypons.Add(newWaypoint.transform.position);
-                InsertWaypointInOrder(newWaypoint.transform.position, passRender);
+                AddNode(newNodePosition, selectedPathType);
             }
         }
 
-        if (waypons.Count > 1)
+        // Validation du chemin
+        if (Input.GetKeyDown(KeyCode.E) && pathNodes.Count > 1 && !pathValidated)
         {
-            Patrol();
+            pathValidated = true;
+            Debug.Log("Chemin validé !");
+        }
+
+        // Déplacement le long du chemin
+        if (pathValidated && pathNodes.Count > 1)
+        {
+            MoveAlongPath();
+        }
+
+        // Suppression d'un nœud avec clic droit
+        if (Input.GetMouseButtonDown(1))
+        {
+            RemoveNodeAtPosition(GetMousePositionRounded());
+        }
+
+        // Rotation du rail avec R
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RotateNodeAtPosition(GetMousePositionRounded());
         }
     }
 
-    private void InsertWaypointInOrder(Vector3 _newWaypointPosition, PassRender _pass)
+    private void RotateNodeAtPosition(Vector3 position)
     {
-        float closestDistance = float.MaxValue;
-        int closestIndex = 0;
-
-        for (int i = 0; i < waypons.Count; i++)
+        foreach (PathNode node in pathNodes)
         {
-            float distance = Vector3.Distance(_newWaypointPosition, waypons[i]);
-            if (distance < closestDistance)
+            if (node.Position == position)
             {
-                closestDistance = distance;
-                closestIndex = i;
+                node.NodeObject.GetComponent<Waypoint>().RotateRail();
+                break;
             }
         }
-
-        _pass.SetupLineRenderer(waypons[closestIndex - 1], _newWaypointPosition);
-        waypons.Insert(closestIndex + 1, _newWaypointPosition);
     }
 
-    Vector3 GetMousePositionInWorld2D()
+    private void AddNode(Vector3 position, PathType type)
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.x = Mathf.Round(mousePosition.x);
-        mousePosition.y = Mathf.Round(mousePosition.y);
-        mousePosition.z = 0;
-        return mousePosition;
-    }
-
-    private void Patrol()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, waypons[index], BeltSpeed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, waypons[index]) <= 0.1)
+        // Vérifier si la position et la zone 2x2 sont déjà occupées
+        if (IsOccupied(position))
         {
-            if (index == 0)
+            Debug.Log("Cette case ou zone est déjà occupée par un autre waypoint !");
+            return;
+        }
+
+        // Instancier un seul prefab de waypoint
+        GameObject newWaypoint = Instantiate(waypointPrefab, position, Quaternion.identity);
+        
+        // Ajouter la position à la liste des positions occupées
+        MarkOccupiedArea(position);
+
+        Waypoint waypointScript = newWaypoint.GetComponent<Waypoint>();
+        waypointScript.SetPathType(type);
+        waypointScript.SetOrientation(Vector3.zero, position, type);
+
+        pathNodes.Add(new PathNode(position, type, newWaypoint));
+    }
+
+    // Vérifier si la zone de 2x2 est occupée
+    private bool IsOccupied(Vector3 position)
+    {
+        for (int x = -1; x <= 0; x += 1)
+        {
+            for (int y = -1; y <= 0; y += 1)
             {
-                int count = Physics2D.OverlapCircleNonAlloc(transform.position, 2, results);
-                for (int i = 0; i < count; i++)
+                Vector3 checkPosition = position + new Vector3(x * 1, y * 1, 0);
+                if (occupiedPositions.Contains(checkPosition))
                 {
-                    if (results[i].gameObject != gameObject)
-                    {
-                        Controller controller = results[i].GetComponent<Controller>();
-                        if (controller != null)
-                        {
-                            Debug.Log(controller);
-                            if (TransportedItem == null)
-                            {
-                                if (TransportedItem == controller.GetItemData())
-                                {
-                                    TransportedItem = controller.GetItemData();
-                                }
-                            }
-
-                            CountItem += controller.GetItemCount();
-                            Debug.Log(TransportedItem + " " + CountItem);
-                        }
-                    }
+                    return true;
                 }
             }
-            else if (index == waypons.Count - 1)
-            {
-                Collider2D[] count = Physics2D.OverlapCircleAll(transform.position, 2, Layer)
-                    .Where(collider => collider.gameObject != gameObject)
-                    .ToArray();
-                if (count.Length > 0)
-                {
-                    BuildUi uiTouch = count[0].GetComponent<BuildUi>();
-                    Controller controller = uiTouch.OpenPrefab.GetComponent<Controller>();
-                    if (controller != null)
-                    {
-                        Debug.Log(controller);
-                        if (TransportedItem != null)
-                        {
-                            if (controller.CanAcceptItem)
-                            {
-                                if (controller.HasCraftSelected())
-                                {
-                                    controller.SetItemCountForMultiSlot(CountItem, TransportedItem);
-                                    CountItem = 0;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+        }
+        return false;
+    }
 
-            if (index >= waypons.Count - 1)
+    // Marquer la zone 2x2 comme occupée
+    private void MarkOccupiedArea(Vector3 position)
+    {
+        for (int x = -1; x <= 0; x += 1)
+        {
+            for (int y = -1; y <= 0; y += 1)
             {
-                index = 0;
-                waypons.Reverse();
+                Vector3 checkPosition = position + new Vector3(x * 1, y * 1, 0);
+                occupiedPositions.Add(checkPosition);
+            }
+        }
+    }
+
+    private bool CanAddNode(Vector3 position)
+    {
+        return !IsOccupied(position);
+    }
+
+    private void RemoveNodeAtPosition(Vector3 position)
+    {
+        foreach (var node in pathNodes)
+        {
+            if (node.Position == position)
+            {
+                // Marquer la zone 2x2 comme libérée
+                UnmarkOccupiedArea(position);
+
+                occupiedPositions.Remove(position);
+                Destroy(node.NodeObject);
+                pathNodes.Remove(node);
+                break;
+            }
+        }
+    }
+
+    // Marquer la zone 2x2 comme libérée
+    private void UnmarkOccupiedArea(Vector3 position)
+    {
+        for (int x = -1; x <= 1; x += 2)
+        {
+            for (int y = -1; y <= 1; y += 2)
+            {
+                Vector3 checkPosition = position + new Vector3(x * 1, y * 1, 0);
+                occupiedPositions.Remove(checkPosition);
+            }
+        }
+    }
+
+    private void MoveAlongPath()
+    {
+        if (pathNodes.Count == 0) return;
+
+        PathNode currentNode = pathNodes[currentNodeIndex];
+        transform.position = Vector3.MoveTowards(transform.position, currentNode.Position, beltSpeed * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, currentNode.Position) <= 0.1f)
+        {
+            if (currentNodeIndex >= pathNodes.Count - 1)
+            {
+                currentNodeIndex = 0;
             }
             else
             {
-                index++;
+                currentNodeIndex++;
             }
         }
     }
 
-    void OnDrawGizmos()
+    private Vector3 GetMousePositionRounded()
     {
-        if (waypons == null || waypons.Count == 0)
-            return;
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0; // Assurer que la position est en 2D
+        return new Vector3(
+            Mathf.Round(mousePosition.x),
+            Mathf.Round(mousePosition.y),
+            0
+        );
+    }
 
-        Gizmos.color = Color.blue;
 
-        for (int i = 0; i < waypons.Count - 1; i++)
+    private class PathNode
+    {
+        public Vector3 Position { get; }
+        public PathType Type { get; set; }
+        public GameObject NodeObject { get; }
+
+        public PathNode(Vector3 position, PathType type, GameObject nodeObject)
         {
-            Gizmos.DrawLine(waypons[i], waypons[i + 1]);
-        }
-
-        foreach (Vector3 waypoint in waypons)
-        {
-            Gizmos.DrawSphere(waypoint, 0.5f);
+            Position = position;
+            Type = type;
+            NodeObject = nodeObject;
         }
     }
 
-    public Vector3 SetSecondPosition(Vector3 _pos)
+    private void OnDestroy()
     {
-        float closestDistance = float.MaxValue;
-        Vector3 closestWaypoint = Vector3.zero;
-
-        foreach (var waypoint in waypons)
+        for (int i = 0; i < pathNodes.Count; i++)
         {
-            float distance = Vector3.Distance(_pos, waypoint);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closestWaypoint = waypoint;
-            }
+            Destroy(pathNodes[i].NodeObject);
         }
-
-        return closestWaypoint;
     }
 }

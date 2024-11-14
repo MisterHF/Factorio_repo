@@ -117,7 +117,7 @@ Transform:
   m_GameObject: {fileID: 5922512252468952377}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -168,8 +168,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 7482667652216324306, guid: e7c832fcbb7e37848865fdc13838e8b8, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.96746206, a: 1}
+  m_Sprite: {fileID: -1962910897, guid: aea857b3eb237fc46b9c75e26bdd292e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -191,13 +191,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ee448a1c174394eb525aa494185378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BeltSpeed: 2
-  TransportedItem: {fileID: 0}
-  CountItem: 0
-  Layer:
+  beltSpeed: 3
+  waypointPrefab: {fileID: 6848597723979576712, guid: d6c7ddbcdfe512942bf6eca4c8d6f566, type: 3}
+  layerMask:
     serializedVersion: 2
-    m_Bits: 128
-  WaypointPrefab: {fileID: 6848597723979576712, guid: d6c7ddbcdfe512942bf6eca4c8d6f566, type: 3}
+    m_Bits: 0
 --- !u!114 &9172440661000833012
 MonoBehaviour:
   m_ObjectHideFlags: 0
