@@ -23,7 +23,7 @@ public class SetInfoText : MonoBehaviour
     
     private void Update()
     {
-        transform.position = Input.mousePosition;
+        // transform.position = Input.mousePosition;
     }
 
     public void SetTextName(string _name)

@@ -8,12 +8,24 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1645167567449719742, guid: 706cfd78421ddfd49a1acf992d0a5108, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1645167567449719742, guid: 706cfd78421ddfd49a1acf992d0a5108, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.6
+      objectReference: {fileID: 0}
     - target: {fileID: 3059268159375394811, guid: 706cfd78421ddfd49a1acf992d0a5108, type: 3}
       propertyPath: AcceptAll
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3059268159375394811, guid: 706cfd78421ddfd49a1acf992d0a5108, type: 3}
       propertyPath: CanDropped
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433405943069820602, guid: 706cfd78421ddfd49a1acf992d0a5108, type: 3}
+      propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5968109802589635639, guid: 706cfd78421ddfd49a1acf992d0a5108, type: 3}
@@ -82,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5968109802589635639, guid: 706cfd78421ddfd49a1acf992d0a5108, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5968109802589635639, guid: 706cfd78421ddfd49a1acf992d0a5108, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -99,6 +111,14 @@ PrefabInstance:
     - target: {fileID: 8147763735653561256, guid: 706cfd78421ddfd49a1acf992d0a5108, type: 3}
       propertyPath: m_Name
       value: InputSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520680182511184887, guid: 706cfd78421ddfd49a1acf992d0a5108, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8685835791614800407, guid: 71690a412fb4013468d3ec8689729cdd, type: 3}
+    - target: {fileID: 8520680182511184887, guid: 706cfd78421ddfd49a1acf992d0a5108, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

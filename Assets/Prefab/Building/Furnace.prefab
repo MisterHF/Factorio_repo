@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 7639157041069361404}
   - component: {fileID: 3997879354862432292}
   - component: {fileID: 5243824245015579918}
+  - component: {fileID: 8153779037560938554}
   m_Layer: 7
   m_Name: Furnace
   m_TagString: Build
@@ -264,3 +265,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f59521d0637f194db6541a4c478e5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8153779037560938554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5811348058467533564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0153245aa8f108b4baf3758f128f1039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Header: Furnace
+  Content: Crafter

@@ -25,7 +25,7 @@ public class Character_Mouvement : MonoBehaviour
     public void ZoomInZoomOut(InputAction.CallbackContext context)
     {
         Camera camera = Camera.main;
-        camera.orthographicSize = Mathf.Clamp(camera.orthographicSize + context.ReadValue<float>(), 2, 15);
+        camera.orthographicSize = Mathf.Clamp(camera.orthographicSize + context.ReadValue<float>(), 15, 30);
     }
 
     public void OpenAndCloseInventory(InputAction.CallbackContext context) 

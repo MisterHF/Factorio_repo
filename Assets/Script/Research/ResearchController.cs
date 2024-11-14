@@ -25,5 +25,7 @@ public class ResearchController : MonoBehaviour
         {
             inventory.RemoveItem(requires[i].key, requires[i].value);
         }
+
+        GetComponent<Button>().interactable = false;
     }
 }
