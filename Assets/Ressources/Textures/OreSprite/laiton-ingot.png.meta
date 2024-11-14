@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      laiton-ingot_0: -4414767555182946067
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -247,7 +247,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      zinc-ore_0: 1015459159510651116
+      zinc-ore_1: 432772031372789711
+      zinc-ore_2: 3608169317158471090
+      zinc-ore_3: -7027875979037868074
+      zinc-ore_4: 1437499454002926104
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

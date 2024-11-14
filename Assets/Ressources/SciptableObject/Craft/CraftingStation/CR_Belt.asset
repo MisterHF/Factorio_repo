@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe49fe1c758196d489ac40d3f3807555, type: 3}
-  m_Name: Belt
+  m_Name: CR_Belt
   m_EditorClassIdentifier: 
   result: {fileID: 11400000, guid: ebad0a50aca52cc49840906a1529839e, type: 2}
   requires:
