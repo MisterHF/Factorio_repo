@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298ce5d7359f70248852d2e8543a46b8, type: 3}
   m_Name: Gold-Ore
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 17
   description: 
-  nameItem: 
-  sprite: {fileID: 0}
-  Type: 0
+  nameItem: Gold Ore
+  sprite: {fileID: -6481148590014551908, guid: 2e1e7e20e3db85b438f381f135f7b495, type: 3}
+  Type: 1
   durability: 0
   type: 0

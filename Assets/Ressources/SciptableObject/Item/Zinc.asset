@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 15
   description: 
   nameItem: Zinc
-  sprite: {fileID: 21300000, guid: 6bb481fd9d5e0604d85cb5f889f20592, type: 3}
+  sprite: {fileID: 3608169317158471090, guid: a3779e6856894b942a89d2b30fcdf435, type: 3}
   Type: 1
   durability: 0
   type: 0

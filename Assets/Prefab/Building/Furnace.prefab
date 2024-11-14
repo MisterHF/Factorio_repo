@@ -251,7 +251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scriptableObject: {fileID: 11400000, guid: e52a2b7ec7e4f5244af1f1e1ff8a7173, type: 2}
-  durability: 5
   delay: 5
 --- !u!114 &5243824245015579918
 MonoBehaviour:

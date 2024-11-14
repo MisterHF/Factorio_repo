@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec5769f5617ed94baf517c4c4047bea, type: 3}
   m_Name: Furnace
   m_EditorClassIdentifier: 
-  ID: 25
+  ID: 107
   description: 
-  nameItem: Furnace
+  nameItem: Bellows furnace
   sprite: {fileID: 7482667652216324306, guid: e7c832fcbb7e37848865fdc13838e8b8, type: 3}
   Type: 0
   heatResistance: 0

@@ -198,8 +198,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   WaypointPrefab: {fileID: 6848597723979576712, guid: d6c7ddbcdfe512942bf6eca4c8d6f566, type: 3}
-  RetrieveWaypointPrefab: {fileID: 6848597723979576712, guid: 20987ef0ff1b78b4d84a5fbc611a9321, type: 3}
-  DepositWaypointPrefab: {fileID: 6848597723979576712, guid: 86bea1d0ff1559046833f4f890560eee, type: 3}
 --- !u!114 &9172440661000833012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +211,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scriptableObject: {fileID: 11400000, guid: ebad0a50aca52cc49840906a1529839e, type: 2}
-  durability: 5
   delay: 5
 --- !u!114 &2010166889676104082
 MonoBehaviour:

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298ce5d7359f70248852d2e8543a46b8, type: 3}
   m_Name: Empty Bottle
   m_EditorClassIdentifier: 
-  ID: 0
-  description: 
-  nameItem: 
-  sprite: {fileID: 0}
-  Type: 0
+  ID: 10
+  description: Empty Bottle (base resources for research)
+  nameItem: Empty Bottle
+  sprite: {fileID: 5924441881788294832, guid: 075007207313c1e4bb9be899f0c172d0, type: 3}
+  Type: 1
   durability: 0
-  type: 0
+  type: 2

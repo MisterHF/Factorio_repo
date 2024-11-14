@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298ce5d7359f70248852d2e8543a46b8, type: 3}
   m_Name: Ressour
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 18
   description: 
-  nameItem: 
-  sprite: {fileID: 0}
-  Type: 0
+  nameItem: Gold Ingot
+  sprite: {fileID: 8021791581365416753, guid: b10ba62c394c0cd429cf2f0f9c8e9ff7, type: 3}
+  Type: 1
   durability: 0
   type: 0

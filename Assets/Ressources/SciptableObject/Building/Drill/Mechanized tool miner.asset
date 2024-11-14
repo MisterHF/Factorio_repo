@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec5769f5617ed94baf517c4c4047bea, type: 3}
   m_Name: Mechanized tool miner
   m_EditorClassIdentifier: 
-  ID: 0
-  description: 
-  nameItem: 
+  ID: 105
+  description: Mine Ores.
+  nameItem: Mechanized tool miner
   sprite: {fileID: 0}
   Type: 0
   heatResistance: 0
   prefab: {fileID: 0}
-  Rarity: 0
+  Rarity: 30
