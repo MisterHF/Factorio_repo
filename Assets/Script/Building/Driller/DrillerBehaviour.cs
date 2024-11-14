@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DrillerBehaviour : Controller
 {
@@ -11,10 +12,12 @@ public class DrillerBehaviour : Controller
     private Coroutine mine;
     private bool isStarted = false;
     private Collider2D[] results = new Collider2D[10];
+    private Slider sliderMining;
     
     private void Start()
     {
         inventoryMiner = Ui.OpenPrefab.GetComponent<GetSlot>().Slot;
+        sliderMining = Ui.OpenPrefab.GetComponent<GetSlot>().SliderMining;
         mine = StartCoroutine(Mine());
     }
 
@@ -67,9 +70,20 @@ public class DrillerBehaviour : Controller
             Debug.Log("This is : " + collision.gameObject.name + ", " + "He has the tag : " + collision.gameObject.tag);
             if (collision.TryGetComponent<Pickeable>(out Pickeable _p))
             {
-                float _delay = _p.delay;
-                _delay = _delay * miningSpeed;
-                yield return new WaitForSeconds(_delay);
+                
+                
+                float delay = _p.delay;
+                delay *= miningSpeed;
+                sliderMining.maxValue = delay;
+                sliderMining.value = 0;
+                float elapsedTime = 0;
+
+                while (elapsedTime < delay)
+                {
+                    elapsedTime += Time.deltaTime;
+                    sliderMining.value = elapsedTime;
+                    yield return null;
+                }
                 inventoryMiner.Count++;
                 inventoryMiner.Data = _p.ScriptableObject;
                 inventoryMiner.Img1.sprite = _p.ScriptableObject.sprite;

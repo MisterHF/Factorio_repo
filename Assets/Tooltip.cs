@@ -51,13 +51,28 @@ public class Tooltip : MonoBehaviour
         float pivotX = position.x / Screen.width;
         float pivotY = position.y / Screen.height;
 
-        if (pivotX > 0.8f) pivotX = 1;
-        else if (pivotX < 0.2f) pivotX = 0;
+        if (pivotX > 0.8f)
+        {
+            pivotX = 1;
+            RTransform.pivot = new Vector2(pivotX, RTransform.pivot.y);
+        }
+        else if (pivotX < 0.2f)
+        {
+            pivotX = 0;
+            RTransform.pivot = new Vector2(pivotX, RTransform.pivot.y);
+        }
 
-        if (pivotY > 0.8f) pivotY = 1;
-        else if (pivotY < 0.2f) pivotY = 0;
+        if (pivotY > 0.8f)
+        {
+            pivotY = 1;
+            RTransform.pivot = new Vector2(RTransform.pivot.x, pivotY);
+        }
+        else if (pivotY < 0.2f)
+        {
+            pivotY = 0;
+            RTransform.pivot = new Vector2(RTransform.pivot.x, pivotY);
+        }
 
-        RTransform.pivot = new Vector2(pivotX, pivotY);
         transform.position = position;
     }
 }

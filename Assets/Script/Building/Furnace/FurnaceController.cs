@@ -78,7 +78,7 @@ public class FurnaceController : Controller
 
     private void GetCraft()
     {
-        SelectedCraft = Dropdown.gameObject.GetComponent<GetValueFromDropDown>().FurnaceCraft;
+        SelectedCraft = Dropdown.gameObject.GetComponent<GetValueFromDropDownFurnace>().FurnaceCraft;
         if (SelectedCraft != null)
         {
             IngredientSlot.ItemAccepted = SelectedCraft.Item1;
