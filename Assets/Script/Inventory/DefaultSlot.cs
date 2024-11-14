@@ -67,9 +67,9 @@ public class DefaultSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
             Count += _draggableItem.CountDrag;
             _draggableItem.Parent.GetComponent<DefaultSlot>().Data = null;
             _draggableItem.Parent.GetComponent<DefaultSlot>().Count = 0;
-            _draggableItem.Parent.GetComponent<DefaultSlot>().ChangeColorAndSprite();
             ChangeColorAndSprite();
             TextCountItem.text = Count.ToString();
+            _draggableItem.Parent.GetComponent<DefaultSlot>().ChangeColorAndSprite();
         }
         else if (transform == _draggableItem.Parent)
         {
@@ -80,8 +80,8 @@ public class DefaultSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
             GiveDataToOtherParent(_draggableItem);
             Data = _draggableItem.Datadrag;
             Count = _draggableItem.CountDrag;
-            ChangeColorAndSprite();
             TextCountItem.text = Count.ToString();
+            ChangeColorAndSprite();
         }
     }
 
@@ -89,6 +89,7 @@ public class DefaultSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     {
         _dragged.Parent.GetComponent<DefaultSlot>().Data = Data;
         _dragged.Parent.GetComponent<DefaultSlot>().Count = Count;
+        _dragged.Parent.GetComponent<DefaultSlot>().ChangeColorAndSprite();
     }
 
     public void ChangeColorAndSprite()

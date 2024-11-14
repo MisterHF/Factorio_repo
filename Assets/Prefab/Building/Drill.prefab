@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2405144771473007382}
   - component: {fileID: 5747140392609637777}
   - component: {fileID: 7379377352094411894}
+  - component: {fileID: 7338464761664951903}
   - component: {fileID: 2697461808250844247}
   - component: {fileID: 8139184335869412264}
   m_Layer: 7
@@ -199,6 +200,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PanelPrefab: {fileID: 6785205206108905504, guid: e340ca79613680542928c25d54df680b, type: 3}
+--- !u!114 &7338464761664951903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212696727665052526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0153245aa8f108b4baf3758f128f1039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Header: Miner
+  Content: Generator
 --- !u!114 &2697461808250844247
 MonoBehaviour:
   m_ObjectHideFlags: 0
