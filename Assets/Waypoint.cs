@@ -1,9 +1,12 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
-    [Header("Sprites pour chaque type de rail")]
-    [SerializeField] private Sprite fillVerticalSprite; // Sprite vertical pour le rail de type Fill
+    [Header("Sprites pour chaque type de rail")] [SerializeField]
+    private Sprite fillVerticalSprite; // Sprite vertical pour le rail de type Fill
+
     [SerializeField] private Sprite fillHorizontalSprite; // Sprite horizontal pour le rail de type Fill
     [SerializeField] private Sprite fillCornerSprite; // Sprite de virage pour le rail de type Fill
 
@@ -15,10 +18,16 @@ public class Waypoint : MonoBehaviour
     [SerializeField] private Sprite emptyHorizontalSprite; // Sprite horizontal pour le rail de type Empty
     [SerializeField] private Sprite emptyCornerSprite; // Sprite de virage pour le rail de type Empty
 
-    [Header("SpriteRenderer")]
-    [SerializeField] private SpriteRenderer spriteRenderer; // Le SpriteRenderer du Waypoint
+    [Header("SpriteRenderer")] [SerializeField]
+    private SpriteRenderer spriteRenderer; // Le SpriteRenderer du Waypoint
+
+    public Vector3 NextPosition;
+    public Vector3 PreviousPosition;
+    public Vector3 NextPositionNormalized;
+    public Vector3 PreviousPositionNormalized;
 
     private BeltController.PathType currentPathType;
+
     private enum RailDirection
     {
         Vertical,
@@ -30,24 +39,36 @@ public class Waypoint : MonoBehaviour
 
     private void Start()
     {
-        // Si aucun sprite n'est assigné, on récupère celui du SpriteRenderer
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();
-
-        // Initialiser le type de direction (horizontal par défaut)
-        currentDirection = RailDirection.Horizontal;
-        UpdateSprite();
     }
 
-    public void SetPathType(BeltController.PathType type)
+    private void Update()
     {
-        currentPathType = type;
-        UpdateSprite();  // Met à jour le sprite lorsque le type de chemin est défini
+        UpdateOrientation();
+        Debug.Log(currentDirection);
+    }
+
+    private void UpdateOrientation()
+    {
+        BeltController beltController = FindObjectOfType<BeltController>();
+        if (beltController == null) return;
+
+        int currentIndex = beltController.GetNodeIndex(transform.position);
+        currentPathType = beltController.GetNodeType(transform.position);
+        if (currentIndex == -1) return;
+
+        PreviousPosition =
+            currentIndex > 0 ? beltController.GetNodePosition(currentIndex - 1) : transform.position;
+        NextPosition = currentIndex < beltController.GetNodeCount() - 1
+            ? beltController.GetNodePosition(currentIndex + 1)
+            : transform.position;
+
+        SetOrientationAngle(PreviousPosition, NextPosition, currentPathType);
     }
 
     private void UpdateSprite()
     {
-        // Met à jour le sprite en fonction du type de rail et de la direction actuelle
         switch (currentPathType)
         {
             case BeltController.PathType.Fill:
@@ -66,7 +87,6 @@ public class Waypoint : MonoBehaviour
                     RailDirection.Vertical => followVerticalSprite,
                     RailDirection.Horizontal => followHorizontalSprite,
                     RailDirection.Corner => followCornerSprite,
-                    _ => followHorizontalSprite
                 };
                 break;
 
@@ -84,7 +104,6 @@ public class Waypoint : MonoBehaviour
 
     public void RotateRail()
     {
-        // Changer la direction du rail de 90 degrés (clockwise)
         currentDirection = currentDirection switch
         {
             RailDirection.Horizontal => RailDirection.Vertical,
@@ -92,24 +111,45 @@ public class Waypoint : MonoBehaviour
             _ => RailDirection.Horizontal
         };
 
-        // Mettre à jour le sprite après chaque rotation
         UpdateSprite();
     }
 
-    public void SetOrientation(Vector3 previousPosition, Vector3 currentPosition, BeltController.PathType type)
+    public void SetOrientationAngle(Vector3 previousPosition, Vector3 nextPosition,
+        BeltController.PathType type)
     {
-        // Si le type est "Follow" et que la direction change, on doit mettre un virage
-        if (type == BeltController.PathType.Follow)
+        PreviousPositionNormalized = (transform.position - previousPosition).normalized;
+        NextPositionNormalized = (nextPosition - transform.position).normalized;
+
+        if (NextPositionNormalized.y == 0 && PreviousPositionNormalized.y == 0)
         {
-            if (previousPosition.x != currentPosition.x && previousPosition.y != currentPosition.y)
+            currentDirection = RailDirection.Horizontal;
+        }
+        else if (NextPositionNormalized.x == 0 && PreviousPositionNormalized.x == 0)
+        {
+            currentDirection = RailDirection.Vertical;
+        }
+        else
+        {
+            currentDirection = RailDirection.Corner;
+            if (NextPositionNormalized.x == 1 && PreviousPositionNormalized.x == 0 && NextPositionNormalized.y == 0 &&
+                PreviousPositionNormalized.y == 1)
             {
-                currentDirection = RailDirection.Corner;
+                transform.eulerAngles = new Vector3(0, 0, -90);
             }
-            else
+            else if (NextPositionNormalized.x == 0 && PreviousPositionNormalized.x == 1 &&
+                     NextPositionNormalized.y == -1 &&
+                     PreviousPositionNormalized.y == 0)
             {
-                currentDirection = previousPosition.x == currentPosition.x ? RailDirection.Vertical : RailDirection.Horizontal;
+                transform.eulerAngles = new Vector3(0, 0, 180);
+            }
+            else if (NextPositionNormalized.x == -1 && PreviousPositionNormalized.x == 0 &&
+                     NextPositionNormalized.y == 0 &&
+                     PreviousPositionNormalized.y == -1)
+            {
+                transform.eulerAngles = new Vector3(0,0,90);
             }
         }
+
         UpdateSprite();
     }
 }

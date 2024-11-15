@@ -9,7 +9,7 @@ public class BeltController : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
 
     private List<PathNode> pathNodes = new();
-    private HashSet<Vector3> occupiedPositions = new(); 
+    private HashSet<Vector3> occupiedPositions = new();
     private int currentNodeIndex = 0;
     private bool pathValidated = false;
     private bool isDrawingPath = false;
@@ -33,29 +33,37 @@ public class BeltController : MonoBehaviour
     private void CreateInitialNode()
     {
         Vector3 startPosition = transform.position;
-        AddNode(startPosition, PathType.Follow);
+        AddNode(startPosition, PathType.Fill);
     }
 
     private void Update()
     {
-        // Changer le type de node avec les touches 1, 2, ou 3
-        if (Input.GetKeyDown(KeyCode.Alpha1)) selectedPathType = PathType.Fill;
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) selectedPathType = PathType.Empty;
-        else if (Input.GetKeyDown(KeyCode.Alpha3)) selectedPathType = PathType.Follow;
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            selectedPathType = PathType.Fill;
+            Debug.Log(selectedPathType);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            selectedPathType = PathType.Empty;
+            Debug.Log(selectedPathType);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            selectedPathType = PathType.Follow;
+            Debug.Log(selectedPathType);
+        }
 
-        // Commencer à dessiner le chemin
         if (Input.GetMouseButtonDown(0) && !pathValidated && SelectedBelt == this)
         {
             isDrawingPath = true;
         }
 
-        // Terminer le dessin du chemin
         if (Input.GetMouseButtonUp(0) && !pathValidated)
         {
             isDrawingPath = false;
         }
 
-        // Ajouter un waypoint lors du clic gauche
         if (isDrawingPath && !pathValidated)
         {
             Vector3 newNodePosition = GetMousePositionRounded();
@@ -65,30 +73,53 @@ public class BeltController : MonoBehaviour
             }
         }
 
-        // Validation du chemin
-        if (Input.GetKeyDown(KeyCode.E) && pathNodes.Count > 1 && !pathValidated)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            pathValidated = true;
-            Debug.Log("Chemin validé !");
+            if (IsPathClosed())
+            {
+                pathValidated = true;
+                Debug.Log("Chemin validé !");
+            }
+            else
+            {
+                Debug.LogWarning("Le chemin doit être une boucle fermée pour être validé !");
+            }
         }
 
-        // Déplacement le long du chemin
-        if (pathValidated && pathNodes.Count > 1)
-        {
-            MoveAlongPath();
-        }
-
-        // Suppression d'un nœud avec clic droit
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && !pathValidated)
         {
             RemoveNodeAtPosition(GetMousePositionRounded());
         }
 
-        // Rotation du rail avec R
         if (Input.GetKeyDown(KeyCode.R))
         {
             RotateNodeAtPosition(GetMousePositionRounded());
         }
+
+        if (pathValidated && pathNodes.Count > 1)
+        {
+            MoveAlongPath();
+        }
+    }
+
+    private Vector3 GetMousePositionRounded()
+    {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition = new Vector3(
+            Mathf.Round(mousePosition.x),
+            Mathf.Round(mousePosition.y),
+            0
+        );
+        if (mousePosition.x % 2 != 0)
+        {
+            mousePosition.x++;
+        }
+        if (mousePosition.y % 2 != 0)
+        {
+            mousePosition.y++;
+        }
+
+        return mousePosition;
     }
 
     private void RotateNodeAtPosition(Vector3 position)
@@ -105,51 +136,43 @@ public class BeltController : MonoBehaviour
 
     private void AddNode(Vector3 position, PathType type)
     {
-        // Vérifier si la position et la zone 2x2 sont déjà occupées
         if (IsOccupied(position))
         {
             Debug.Log("Cette case ou zone est déjà occupée par un autre waypoint !");
             return;
         }
 
-        // Instancier un seul prefab de waypoint
         GameObject newWaypoint = Instantiate(waypointPrefab, position, Quaternion.identity);
-        
-        // Ajouter la position à la liste des positions occupées
         MarkOccupiedArea(position);
 
-        Waypoint waypointScript = newWaypoint.GetComponent<Waypoint>();
-        waypointScript.SetPathType(type);
-        waypointScript.SetOrientation(Vector3.zero, position, type);
 
         pathNodes.Add(new PathNode(position, type, newWaypoint));
     }
 
-    // Vérifier si la zone de 2x2 est occupée
     private bool IsOccupied(Vector3 position)
     {
         for (int x = -1; x <= 0; x += 1)
         {
             for (int y = -1; y <= 0; y += 1)
             {
-                Vector3 checkPosition = position + new Vector3(x * 1, y * 1, 0);
+                Vector3 checkPosition = position + new Vector3(x, y, 0);
                 if (occupiedPositions.Contains(checkPosition))
                 {
                     return true;
                 }
             }
         }
+
         return false;
     }
 
-    // Marquer la zone 2x2 comme occupée
     private void MarkOccupiedArea(Vector3 position)
     {
         for (int x = -1; x <= 0; x += 1)
         {
             for (int y = -1; y <= 0; y += 1)
             {
-                Vector3 checkPosition = position + new Vector3(x * 1, y * 1, 0);
+                Vector3 checkPosition = position + new Vector3(x, y, 0);
                 occupiedPositions.Add(checkPosition);
             }
         }
@@ -166,10 +189,7 @@ public class BeltController : MonoBehaviour
         {
             if (node.Position == position)
             {
-                // Marquer la zone 2x2 comme libérée
                 UnmarkOccupiedArea(position);
-
-                occupiedPositions.Remove(position);
                 Destroy(node.NodeObject);
                 pathNodes.Remove(node);
                 break;
@@ -177,12 +197,11 @@ public class BeltController : MonoBehaviour
         }
     }
 
-    // Marquer la zone 2x2 comme libérée
     private void UnmarkOccupiedArea(Vector3 position)
     {
-        for (int x = -1; x <= 1; x += 2)
+        for (int x = -1; x <= 0; x += 1)
         {
-            for (int y = -1; y <= 1; y += 2)
+            for (int y = -1; y <= 0; y += 1)
             {
                 Vector3 checkPosition = position + new Vector3(x * 1, y * 1, 0);
                 occupiedPositions.Remove(checkPosition);
@@ -210,19 +229,18 @@ public class BeltController : MonoBehaviour
         }
     }
 
-    private Vector3 GetMousePositionRounded()
+
+    private bool IsPathClosed()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0; // Assurer que la position est en 2D
-        return new Vector3(
-            Mathf.Round(mousePosition.x),
-            Mathf.Round(mousePosition.y),
-            0
-        );
+        if (pathNodes.Count < 3) return false;
+
+        Vector3 firstNode = pathNodes[0].Position;
+        Vector3 lastNode = pathNodes[pathNodes.Count - 1].Position;
+
+        return Vector3.Distance(firstNode, lastNode) <= 2f;
     }
 
-
-    private class PathNode
+    public class PathNode
     {
         public Vector3 Position { get; }
         public PathType Type { get; set; }
@@ -236,11 +254,52 @@ public class BeltController : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    public int GetNodeIndex(Vector3 position)
     {
         for (int i = 0; i < pathNodes.Count; i++)
         {
-            Destroy(pathNodes[i].NodeObject);
+            if (pathNodes[i].Position == position)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public PathType GetNodeType(Vector3 position)
+    {
+        for (int i = 0; i < pathNodes.Count; i++)
+        {
+            if (pathNodes[i].Position == position)
+            {
+                return pathNodes[i].Type;
+            }
+        }
+
+        return PathType.Follow;
+    }
+
+    public Vector3 GetNodePosition(int index)
+    {
+        if (index >= 0 && index < pathNodes.Count)
+        {
+            return pathNodes[index].Position;
+        }
+
+        return Vector3.zero;
+    }
+
+    public int GetNodeCount()
+    {
+        return pathNodes.Count;
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var node in pathNodes)
+        {
+            Destroy(node.NodeObject);
         }
     }
 }
