@@ -156,7 +156,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 677
       y: -1024
-      width: 478
+      width: 489
       height: 2961
     contents:
     - model: {fileID: 114023846229194376}
@@ -185,7 +185,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 397
     y: -1024
-    width: 759
+    width: 769
     height: 2961
 --- !u!114 &114350483966674976
 MonoBehaviour:
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Children:
   - {fileID: 8926484042661614628}
   - {fileID: 8926484042661614727}
-  m_UIPosition: {x: 705, y: 658}
+  m_UIPosition: {x: 715, y: 635}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -2374,7 +2374,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.TSphere, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"transform":{"position":{"x":8.43396282196045,"y":-0.07545304298400879,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0}},"radius":2.0}'
+      m_SerializableObject: '{"transform":{"position":{"x":8.43396282196045,"y":-0.07545304298400879,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0}},"radius":3.0}'
     m_Space: 0
   m_Property:
     name: sphere
@@ -2454,8 +2454,7 @@ MonoBehaviour:
       m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
   m_Direction: 0
-  m_LinkedSlots:
-  - {fileID: 8926484042661614863}
+  m_LinkedSlots: []
 --- !u!114 &8926484042661614645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3490,7 +3489,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Sphere, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":2.016082763671875,"y":-0.7292213439941406,"z":0.0},"radius":1.0}'
+      m_SerializableObject: '{"center":{"x":1.457275390625,"y":-0.3699875473976135,"z":0.0},"radius":1.0}'
     m_Space: 0
   m_Property:
     name: Sphere
@@ -4965,9 +4964,7 @@ MonoBehaviour:
   m_Tooltip: 
   m_Nodes:
   - m_Id: 0
-    linkedSlots:
-    - outputSlot: {fileID: 8926484042661614863}
-      inputSlot: {fileID: 8926484042661614644}
+    linkedSlots: []
     position: {x: 469.3333, y: 881.3334}
     expandedSlots: []
     expanded: 1
@@ -5008,8 +5005,7 @@ MonoBehaviour:
       m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
   m_Direction: 1
-  m_LinkedSlots:
-  - {fileID: 8926484042661614644}
+  m_LinkedSlots: []
 --- !u!114 &8926484042661614864
 MonoBehaviour:
   m_ObjectHideFlags: 0
