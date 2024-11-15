@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe2ab2471c632914e9bc60f9c3e152c7, type: 3}
   m_Name: FC_Brick
   m_EditorClassIdentifier: 
-  Name: 
-  Item1: {fileID: 0}
-  Item2: {fileID: 0}
+  Name: Brick
+  Item1: {fileID: 11400000, guid: 566a173cc60ae7344aa2f4a27e00511e, type: 2}
+  Item2: {fileID: 11400000, guid: b7843d644427ad0458e867892a541466, type: 2}
   RequiresHeat: 0

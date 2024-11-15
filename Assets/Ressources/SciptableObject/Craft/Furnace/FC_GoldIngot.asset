@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe2ab2471c632914e9bc60f9c3e152c7, type: 3}
   m_Name: FC_GoldIngot
   m_EditorClassIdentifier: 
-  Name: 
-  Item1: {fileID: 0}
-  Item2: {fileID: 0}
+  Name: Gold Ingot
+  Item1: {fileID: 11400000, guid: a6c8e0d70d2e46241a4eebd69d240921, type: 2}
+  Item2: {fileID: 11400000, guid: 881cf186f743be740a462f7260a43917, type: 2}
   RequiresHeat: 0

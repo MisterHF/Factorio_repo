@@ -29,7 +29,10 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         get { return parent; }
         set { parent = value; }
     }
-
+    private void Update()
+    {
+        Image.preserveAspect = true;
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe49fe1c758196d489ac40d3f3807555, type: 3}
+  m_Name: CR_Gem Crafter V2
+  m_EditorClassIdentifier: 
+  result: {fileID: 11400000, guid: 681459ada158c26468c83a4eaa686e57, type: 2}
+  requires:
+  - {fileID: 11400000, guid: b7843d644427ad0458e867892a541466, type: 2}
+  - {fileID: 11400000, guid: d186596fb9c9186419552fb863562c2e, type: 2}
+  - {fileID: 11400000, guid: 1e5662b6525c3af4f8e376f0b80a777e, type: 2}
+  - {fileID: 11400000, guid: 528030a7203900b45a5a24f3df01d954, type: 2}
+  - {fileID: 11400000, guid: 0652ad6c20e62a643b1015a5c479a939, type: 2}
+  countPerRaquires: 1400000014000000050000000100000005000000

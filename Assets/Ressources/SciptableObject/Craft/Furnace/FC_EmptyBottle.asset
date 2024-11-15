@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe2ab2471c632914e9bc60f9c3e152c7, type: 3}
   m_Name: FC_EmptyBottle
   m_EditorClassIdentifier: 
-  Name: 
-  Item1: {fileID: 0}
-  Item2: {fileID: 0}
+  Name: Empty Bottle
+  Item1: {fileID: 11400000, guid: 300ad6b9017ab7746b3ad4bc8f6b721e, type: 2}
+  Item2: {fileID: 11400000, guid: 7abe1958945189a4a9e859f634b42c0c, type: 2}
   RequiresHeat: 0

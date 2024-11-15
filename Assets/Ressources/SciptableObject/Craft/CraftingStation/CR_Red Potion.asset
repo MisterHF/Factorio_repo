@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe49fe1c758196d489ac40d3f3807555, type: 3}
   m_Name: CR_Red Potion
   m_EditorClassIdentifier: 
-  result: {fileID: 0}
-  requires: []
-  countPerRaquires: 
+  result: {fileID: 11400000, guid: d3eb2a83d44eea24691516593ba54f7a, type: 2}
+  requires:
+  - {fileID: 11400000, guid: 528030a7203900b45a5a24f3df01d954, type: 2}
+  - {fileID: 11400000, guid: 7abe1958945189a4a9e859f634b42c0c, type: 2}
+  countPerRaquires: 0a00000001000000

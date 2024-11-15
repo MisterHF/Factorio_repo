@@ -28,8 +28,6 @@ public class CraftingController : Controller
     {
         CrafterDataManager.instance.addCraftEvent += UpdateCraftPossibility;
     }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         UpdateCraftPossibility();
@@ -74,6 +72,7 @@ public class CraftingController : Controller
                 CrafterDataManager.instance.crafts[i].result.name;
             btn.transform.GetChild(1).GetComponent<Image>().sprite =
                 CrafterDataManager.instance.crafts[i].result.sprite;
+            btn.transform.GetChild(1).GetComponent<Image>().preserveAspect = true;
             btn.GetComponent<SpawnRequireSlots>().RequireSlot1 = CrafterDataManager.instance.crafts[i];
             btn.GetComponent<SpawnRequireSlots>().CraftingController = this;
 
