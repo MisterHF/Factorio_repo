@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectUnlock: {fileID: 11400000, guid: 13c320c95504aef4b9c1e680322c55aa, type: 2}
   RequiresObjects:
-  - key: {fileID: 11400000, guid: 2bcd2ccf17088b142891b6880ecbb259, type: 2}
-    value: 1
+  - key: {fileID: 11400000, guid: d3eb2a83d44eea24691516593ba54f7a, type: 2}
+    value: 100

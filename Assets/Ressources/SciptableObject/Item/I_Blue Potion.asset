@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 5
   description: Blue Potion (basic resource research)
   nameItem: Blue Potion
-  sprite: {fileID: 21300000, guid: f2030ba9717f5c44cb656814dc84c1e7, type: 3}
+  sprite: {fileID: 21300000, guid: 6ee03ffaff7d63d40b05fb4105287b45, type: 3}
   Type: 1
   durability: 0
   type: 2
